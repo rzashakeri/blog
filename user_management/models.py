@@ -14,5 +14,5 @@ class User(AbstractUser):
         return self.email
 
     class Meta:
-        verbose_name = 'کاربر'
-        verbose_name_plural = 'کاربران'
+        verbose_name = 'user management'
+        verbose_name_plural = 'users management'
