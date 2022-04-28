@@ -9,7 +9,9 @@ class Home(TemplateView):
 
     def get_context_data(self):
         context = super(Home, self).get_context_data()
-        context['articles'] = Article.objects.filter(is_active=True).all()
+        context['articles_general'] = Article.objects.filter(category__name='general', is_active=True).all()
+        context['articles_web'] = Article.objects.filter(category__name='web', is_active=True).all()
+        context['articles_programming'] = Article.objects.filter(category__name='programming', is_active=True).all()
         return context
 
 
