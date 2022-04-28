@@ -4,6 +4,7 @@ from user_management.models import User
 
 
 class ArticleCategory(models.Model):
+    parent = models.ForeignKey('ArticleCategory', on_delete=models.CASCADE, verbose_name='parent', null=True)
     name = models.CharField(max_length=100, verbose_name='category name')
     description = models.CharField(max_length=300, verbose_name='description')
     slug = models.SlugField(max_length=300, verbose_name='url slug', unique=True)

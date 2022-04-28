@@ -11,7 +11,7 @@ admin.site.register(models.Article, ArticleAdmin)
 
 
 class ArticleCategoryAdmin(admin.ModelAdmin):
-    list_display = ['name', 'description', 'is_active']
+    list_display = ['name', 'description', 'is_active', 'parent']
 
 
 admin.site.register(models.ArticleCategory, ArticleCategoryAdmin)
