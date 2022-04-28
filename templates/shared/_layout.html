@@ -1,3 +1,5 @@
+{% load static %}
+{% load render_partial %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +11,7 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-{% include 'shared/header_component.html' %}
+{% render_partial %}
 <main class="main">
     <section class="intro container block">
         <span class="intro__badge badge"> 👋 Meet Personally </span>

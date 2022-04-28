@@ -37,10 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # internal app
     'user_management',
     'site_setting',
     'article',
     'newsletter',
+    # external app
     'django_render_partial'
 ]
 
