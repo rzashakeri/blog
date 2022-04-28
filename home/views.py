@@ -13,3 +13,7 @@ def header_component(request):
 
 def intro_component(request):
     return render(request, 'shared/intro_component.html')
+
+
+def newsletter_component(request):
+    return render(request, 'shared/newsletter_component.html')
