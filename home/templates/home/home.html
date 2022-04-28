@@ -1,140 +1,45 @@
 {% extends 'shared/_layout.html' %}
 {% block title %}
-blog
+    blog
 {% endblock %}
 {% block content %}
-<section class="articles">
-    <div class="articles__main">
-        <div class="articles__view-all container">
-            <h2>Daily Digest</h2>
-            <a class="btn btn--primary" href="#">View all</a>
-        </div>
-        <div class="articles__item">
-            <div class="articles__body">
-                <span class="articles__date">AUGust 13, 2021 </span>
-                <h2 class="articles__title">
-                    10 Hilarious Cartoons That Depict Real-Life Problems of
-                    Programmers
-                </h2>
-                <p class="articles__description">
-                    Redefined the user acquisition and redesigned the onboarding
-                    experience, all within 3 working weeks.
-                </p>
+    <section class="articles">
+        <div class="articles__main">
+            <div class="articles__view-all container">
+                <h2>Daily Digest</h2>
+                <a class="btn btn--primary" href="#">View all</a>
             </div>
-            <picture class="articles__image">
-                <source
-                        class="articles__image-mobile"
-                        media="(max-width:640px)"
-                        srcset="/assets/images/articles_Thumbnail_mobile.svg"
-                />
-                <source
-                        class="articles__image-tablet"
-                        media="(max-width:768px)"
-                        srcset="/assets/images/articles_Thumbnail_tablet.svg"
-                />
-                <img
-                        class="articles__image-default"
-                        src="/assets/images/articles_Thumbnail_desktop.svg"
-                        alt=""
-                />
-            </picture>
-        </div>
-        <div class="articles__item">
-            <div class="articles__body">
-                <div class="articles__date">AUGust 13, 2021</div>
-                <h2 class="articles__title">
-                    10 Hilarious Cartoons That Depict Real-Life Problems of
-                    Programmers
-                </h2>
-                <p class="articles__description">
-                    Redefined the user acquisition and redesigned the onboarding
-                    experience, all within 3 working weeks.
-                </p>
-            </div>
-            <picture class="articles__image">
-                <source
-                        class="articles__image-mobile"
-                        media="(max-width:640px)"
-                        srcset="/assets/images/articles_Thumbnail_1_mobile.svg"
-                />
-                <source
-                        class="articles__image-tablet"
-                        media="(max-width:768px)"
-                        srcset="/assets/images/articles_Thumbnail_1_mobile.svg"
-                />
-                <img
-                        class="articles__image-default"
-                        src="/assets/images/articles_Thumbnail_1_mobile.svg"
-                        alt=""
-                />
-            </picture>
-        </div>
-        <div class="articles__item">
-            <div class="articles__body">
-                <span class="articles__date">AUGust 13, 2021 </span>
-                <h2 class="articles__title">
-                    10 Hilarious Cartoons That Depict Real-Life Problems of
-                    Programmers
-                </h2>
-                <p class="articles__description">
-                    Redefined the user acquisition and redesigned the onboarding
-                    experience, all within 3 working weeks.
-                </p>
-            </div>
-            <picture class="articles__image">
-                <source
-                        class="articles__image-mobile"
-                        media="(max-width:640px)"
-                        srcset="/assets/images/articles_Thumbnail_2_mobile.svg"
-                />
-                <source
-                        class="articles__image-tablet"
-                        media="(max-width:768px)"
-                        srcset="/assets/images/articles_Thumbnail_2_mobile.svg"
-                />
-                <img
-                        class="articles__image-default"
-                        src="/assets/images/articles_Thumbnail_2_mobile.svg"
-                        alt=""
-                />
-            </picture>
-        </div>
-    </div>
+            {% for article in articles %}
+                <div class="articles__item">
+                    <div class="articles__body">
+                        <span class="articles__date">{{ article.create_date }}</span>
+                        <h2 class="articles__title">
+                            {{ article.title }}
+                        </h2>
+                        <p class="articles__description">
+                            {{ article.short_description }}
+                        </p>
+                    </div>
+                    <picture class="articles__image">
+                        <source
+                                class="articles__image-mobile"
+                                media="(max-width:640px)"
+                                srcset="{{ article.image.url }}"
+                        />
+                        <source
+                                class="articles__image-tablet"
+                                media="(max-width:768px)"
+                                srcset="{{ article.image.url }}"
+                        />
+                        <img
+                                class="articles__image-default"
+                                src="{{ article.image.url }}"
+                                alt="{{ article.title }}"
+                        />
+                    </picture>
+                </div>
+            {% endfor %}
 
-    <div class="articles__view-all container">
-        <h2>Design Tools</h2>
-        <a class="btn btn--primary" href="#">View all</a>
-    </div>
-    <div class="articles__item">
-        <div class="articles__body">
-            <span class="articles__date">AUGust 13, 2021 </span>
-            <h2 class="articles__title">
-                10 Hilarious Cartoons That Depict Real-Life Problems of
-                Programmers
-            </h2>
-            <p class="articles__description">
-                Redefined the user acquisition and redesigned the onboarding
-                experience, all within 3 working weeks.
-            </p>
         </div>
-        <picture class="articles__image">
-            <source
-                    class="articles__image-mobile"
-                    media="(max-width:640px)"
-                    srcset="/assets/images/articles_Thumbnail_3_mobile.svg"
-            >
-            <source
-                    class="articles__image-tablet"
-                    media="(max-width:768px)"
-                    srcset="/assets/images/articles_Thumbnail_3_mobile.svg"
-            >
-            <img
-                    class="articles__image-default"
-                    src="/assets/images/articles_Thumbnail_3_mobile.svg"
-                    alt=""
-            />
-        </picture>
-    </div>
-
-</section>
+    </section>
 {% endblock %}

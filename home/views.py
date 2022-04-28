@@ -1,10 +1,16 @@
 from django.shortcuts import render
 from django.views import View
 from django.views.generic import TemplateView
+from article.models import Article
 
 
 class Home(TemplateView):
     template_name = 'home/home.html'
+
+    def get_context_data(self):
+        context = super(Home, self).get_context_data()
+        context['articles'] = Article.objects.filter(is_active=True).all()
+        return context
 
 
 def header_component(request):
