@@ -3,6 +3,13 @@ from django.db import models
 from user_management.models import User
 
 
+class ArticleCategory(models.Model):
+    name = models.CharField(max_length=100, verbose_name='category name')
+    description = models.CharField(max_length=300, verbose_name='description')
+    slug = models.SlugField(max_length=300, verbose_name='url slug', unique=True)
+    is_active = models.BooleanField(verbose_name='is active ?')
+
+
 class Article(models.Model):
     title = models.CharField(max_length=300, verbose_name='title')
     short_description = models.CharField(max_length=400, verbose_name='short description')
@@ -12,6 +19,7 @@ class Article(models.Model):
     create_date = models.DateTimeField(auto_now_add=True, verbose_name='create date')
     slug = models.SlugField(max_length=400, unique=True, verbose_name='url slug')
     is_active = models.BooleanField(verbose_name='is active ?')
+    category = models.ManyToManyField(to=ArticleCategory, verbose_name='category')
 
     def __str__(self):
         return self.title
