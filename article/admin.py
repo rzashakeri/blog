@@ -1,3 +1,10 @@
 from django.contrib import admin
+from . import models
 
-# Register your models here.
+
+class ArticleAdmin(admin.ModelAdmin):
+    list_display = ['title', 'short_description', 'author', 'create_date']
+    list_editable = ['short_description']
+
+
+admin.site.register(models.Article, ArticleAdmin)
