@@ -11,18 +11,8 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-{% render_partial %}
+{% render_partial 'home.views.header_component' %}
 <main class="main">
-    <section class="intro container block">
-        <span class="intro__badge badge"> 👋 Meet Personally </span>
-        <h1 class="intro__title">
-            Minimal blog template for creative expressions
-        </h1>
-        <p class="intro__description">
-            Customisable and SEO-friendly blog template for personal and
-            commercial purposes.
-        </p>
-    </section>
     {% block content %}
     
     {% endblock %}
