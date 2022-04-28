@@ -4,7 +4,7 @@ from django.views.generic import TemplateView
 
 
 class Home(TemplateView):
-    template_name = 'shared/_layout.html'
+    template_name = 'home/home.html'
 
 
 def header_component(request):

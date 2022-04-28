@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'site_setting',
     'article',
     'newsletter',
+    'home',
     # external app
     'django_render_partial'
 ]
