@@ -17,3 +17,7 @@ def intro_component(request):
 
 def newsletter_component(request):
     return render(request, 'shared/newsletter_component.html')
+
+
+def footer_component(request):
+    return render(request, 'shared/footer_component.html')
