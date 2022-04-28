@@ -35,3 +35,20 @@ class Article(models.Model):
     class Meta:
         verbose_name = 'article'
         verbose_name_plural = 'articles'
+
+
+class ArticleComment(models.Model):
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE, verbose_name='user')
+    article = models.ForeignKey(to=Article, on_delete=models.CASCADE, verbose_name='article')
+    comment = models.TextField(verbose_name='comment')
+    created_date = models.DateTimeField(auto_now_add=True, verbose_name='comment create date')
+    parent = models.ForeignKey(to='ArticleComment', on_delete=models.CASCADE, verbose_name='parent', null=True, blank=True)
+    confirm = models.BooleanField(verbose_name='confirmed ?', default=False)
+
+    def __str__(self):
+        return self.comment
+
+    class Meta:
+        verbose_name = 'comment'
+        verbose_name_plural = 'comments'
+

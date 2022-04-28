@@ -15,3 +15,11 @@ class ArticleCategoryAdmin(admin.ModelAdmin):
 
 
 admin.site.register(models.ArticleCategory, ArticleCategoryAdmin)
+
+
+class ArticleCommentAdmin(admin.ModelAdmin):
+    list_display = ['user', 'comment', 'created_date', 'confirm']
+    list_editable = ['confirm']
+
+
+admin.site.register(models.ArticleComment, ArticleCommentAdmin)
