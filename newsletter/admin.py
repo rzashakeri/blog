@@ -1,3 +1,9 @@
 from django.contrib import admin
+from . import models
 
-# Register your models here.
+
+class NewsletterAdmin(admin.ModelAdmin):
+    list_display = ['email']
+    
+
+admin.site.register(models.Newsletter, NewsletterAdmin)
