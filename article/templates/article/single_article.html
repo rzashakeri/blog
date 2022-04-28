@@ -1,0 +1,36 @@
+{% extends 'shared/_layout.html' %}
+{% block title %}
+
+{% endblock %}
+{% block content %}
+    <article class="article container">
+        <div class="article__heading">
+            <h1 class="article__title">{{ single_article.title }}</h1>
+            <div class="article__detail">
+                <span class="article__date">{{ single_article.create_date }}</span>
+                <span class="article__category">{{ single_article.category.name }}</span>
+            </div>
+        </div>
+        <picture class="article__image">
+            <source
+                    class="article__image-mobile"
+                    media="(max-width:640px)"
+                    srcset="{{ single_article.image.url }}"
+            >
+            <img class="article__image-default" src="{{ single_article.image.url }}" alt="">
+        </picture>
+        <div class="article__body">
+            <p class="article__description">
+                {{ single_article.description }}
+            </p>
+            <picture class="article__thumbnail">
+                <source
+                        class="article__thumbnail-mobile"
+                        media="(max-width:640px)"
+                        srcset="/assets/images/article_thumbnail_into.svg"
+                >
+                <img class="article__thumbnail-default" src="/assets/images/article_thumbnail_into.svg" alt="">
+            </picture>
+        </div>
+    </article>
+{% endblock %}
