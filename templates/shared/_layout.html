@@ -4,33 +4,12 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="/css/font.css"/>
-    <link rel="stylesheet" href="/css/style.css"/>
-    <title>{% block title %}
-
-    {% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/font.css"/>
+    <link rel="stylesheet" href="/static/css/style.css"/>
+    <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-<header class="header">
-    <nav class="navbar container block">
-        <a class="navbar__logo" href="#">
-            <img src="/static/assets/images/personally-logo.svg" alt="logo"/>
-        </a>
-        <div class="navbar__toggler">
-            <div class="bar bar-one"></div>
-            <div class="bar bar-two"></div>
-            <div class="bar bar-three"></div>
-        </div>
-        <div class="navbar__list">
-            <ul class="navbar__links">
-                <li class="navbar__link"><a href="#">Daily Digest</a></li>
-                <li class="navbar__link"><a href="#">Design Tools</a></li>
-                <li class="navbar__link"><a href="#">Tutorials</a></li>
-                <a class="navbar__cta btn" href="#">Subscribe</a>
-            </ul>
-        </div>
-    </nav>
-</header>
+{% include 'shared/header_component.html' %}
 <main class="main">
     <section class="intro container block">
         <span class="intro__badge badge"> 👋 Meet Personally </span>

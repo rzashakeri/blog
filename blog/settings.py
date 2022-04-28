@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'user_management',
     'site_setting',
     'article',
-    'newsletter'
+    'newsletter',
+    'django_render_partial'
 ]
 
 MIDDLEWARE = [
