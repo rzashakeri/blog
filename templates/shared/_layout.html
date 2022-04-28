@@ -13,8 +13,9 @@
 <body>
 {% render_partial 'home.views.header_component' %}
 <main class="main">
+    {% render_partial 'home.views.intro_component' %}
     {% block content %}
-    
+
     {% endblock %}
     <section class="newsletter">
         <h1 class="newsletter__title">Personally Newsletter</h1>

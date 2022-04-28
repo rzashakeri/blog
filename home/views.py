@@ -9,3 +9,7 @@ class Home(TemplateView):
 
 def header_component(request):
     return render(request, 'shared/header_component.html')
+
+
+def intro_component(request):
+    return render(request, 'shared/intro_component.html')
