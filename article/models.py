@@ -9,6 +9,13 @@ class ArticleCategory(models.Model):
     slug = models.SlugField(max_length=300, verbose_name='url slug', unique=True)
     is_active = models.BooleanField(verbose_name='is active ?')
 
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'category'
+        verbose_name_plural = 'categories'
+
 
 class Article(models.Model):
     title = models.CharField(max_length=300, verbose_name='title')
@@ -19,7 +26,7 @@ class Article(models.Model):
     create_date = models.DateTimeField(auto_now_add=True, verbose_name='create date')
     slug = models.SlugField(max_length=400, unique=True, verbose_name='url slug')
     is_active = models.BooleanField(verbose_name='is active ?')
-    category = models.ManyToManyField(to=ArticleCategory, verbose_name='category')
+    category = models.ManyToManyField(to=ArticleCategory,verbose_name='category')
 
     def __str__(self):
         return self.title
