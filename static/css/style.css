@@ -212,6 +212,13 @@ p {
   border: 1px solid #e4e7ec;
 }
 
+.more-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+}
+
 /* badge */
 .badge {
   background-color: #f2f4f7;
@@ -336,11 +343,14 @@ p {
   display: none;
 }
 
-.more-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem 0;
+.articles__title > a {
+  text-decoration: none;
+  color: black;
+}
+
+.articles__title > a:hover {
+  color: #d49a04;
+  transition: all 0.4s ease-out;
 }
 
 @media screen and (min-width: 768px) {
