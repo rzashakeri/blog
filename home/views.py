@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views import View
 from django.views.generic import TemplateView
 from article.models import Article
+from site_setting.models import HeaderLink
 
 
 class Home(TemplateView):
@@ -29,3 +30,9 @@ def newsletter_component(request):
 
 def footer_component(request):
     return render(request, 'shared/footer_component.html')
+
+
+def header_link(request):
+    context = {
+        'link': HeaderLink.objects.filter
+    }

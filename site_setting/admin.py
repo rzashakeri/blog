@@ -8,3 +8,11 @@ class SiteSettingAdmin(admin.ModelAdmin):
 
 
 admin.site.register(models.SiteSetting, SiteSettingAdmin)
+
+
+class HeaderLinkAdmin(admin.ModelAdmin):
+    list_display = ['name', 'link']
+    list_editable = ['link']
+
+
+admin.site.register(models.HeaderLink, HeaderLinkAdmin)
