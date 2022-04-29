@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'home',
     # external app
     'django_render_partial',
-    'sorl.thumbnail'
+    'sorl.thumbnail',
+    'ckeditor'
 ]
 
 MIDDLEWARE = [
