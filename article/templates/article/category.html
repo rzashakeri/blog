@@ -11,7 +11,9 @@
                     <div class="articles__body">
                         <span class="articles__date">{{ article.create_date }}</span>
                         <h2 class="articles__title">
-                            {{ article.title }}
+                            <a href="{% url 'single_article' slug=article.slug %}">
+                                {{ article.title }}
+                            </a>
                         </h2>
                         <p class="articles__description">
                             {{ article.short_description }}
@@ -40,7 +42,7 @@
                 </div>
             {% endfor %}
             {% if page_obj.has_next %}
-                    <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}"></a>
+                <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}"></a>
             {% endif %}
 
         </div>
