@@ -29,3 +29,16 @@ class HeaderLink(models.Model):
     class Meta:
         verbose_name = 'header link'
         verbose_name_plural = 'header Links'
+
+
+class Intro(models.Model):
+    intro_title = models.CharField(max_length=300, verbose_name='title')
+    intro_tag = models.CharField(max_length=300, verbose_name='tag')
+    intro_description = models.TextField(verbose_name='description')
+
+    def __str__(self):
+        return self.intro_title
+
+    class Meta:
+        verbose_name = 'Intro'
+        verbose_name_plural = 'Intro,s'
