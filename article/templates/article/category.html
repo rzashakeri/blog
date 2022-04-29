@@ -4,10 +4,10 @@
     {{ category_name }}
 {% endblock %}
 {% block content %}
-    <section class="articles">
+    <section class="articles infinite-container">
         <div class="articles__main">
             {% for article in articles %}
-                <div class="articles__item">
+                <div class="articles__item infinite-item">
                     <div class="articles__body">
                         <span class="articles__date">{{ article.create_date }}</span>
                         <h2 class="articles__title">
@@ -39,10 +39,10 @@
                     {% endthumbnail %}
                 </div>
             {% endfor %}
+            {% if page_obj.has_next %}
+                    <a class="infinite-more-link" href="?page={{ page_obj.next_page_number }}"></a>
+            {% endif %}
 
-            <div class="more-btn container">
-                <a class=" btn btn--primary" href="#">More Article</a>
-            </div>
         </div>
     </section>
 {% endblock %}
