@@ -35,6 +35,7 @@ class Intro(models.Model):
     title = models.CharField(max_length=300, verbose_name='title')
     tag = models.CharField(max_length=300, verbose_name='tag')
     description = models.TextField(verbose_name='description')
+    is_active = models.BooleanField(verbose_name='is active ?')
 
     def __str__(self):
         return self.title
