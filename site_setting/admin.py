@@ -3,8 +3,8 @@ from . import models
 
 
 class SiteSettingAdmin(admin.ModelAdmin):
-    list_display = ['site_name', 'phone_number', 'email']
-    list_editable = ['phone_number', 'email']
+    list_display = ['site_name', 'phone_number', 'email', 'is_active']
+    list_editable = ['phone_number', 'email', 'is_active']
 
 
 admin.site.register(models.SiteSetting, SiteSettingAdmin)

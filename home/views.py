@@ -19,7 +19,7 @@ class Home(TemplateView):
 def header_component(request):
     context = {
         'links': HeaderLink.objects.filter(is_active=True),
-        'site_setting': SiteSetting.objects.filter()
+        'site': SiteSetting.objects.filter(is_active=True).first()
     }
     return render(request, 'shared/header_component.html', context)
 
