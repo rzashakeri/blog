@@ -1,10 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'shared/_layout.html' %}
+{% block title %}
+    {{ category_name }}
+{% endblock %}
+{% block content %}
+    <section class="articles">
+            <div class="articles__main">
+            {% for article in articles %}
+                <div class="articles__item">
+                    <div class="articles__body">
+                        <span class="articles__date">{{ article.create_date }}</span>
+                        <h2 class="articles__title">
+                            {{ article.title }}
+                        </h2>
+                        <p class="articles__description">
+                            {{ article.short_description }}
+                        </p>
+                    </div>
+                    <picture class="articles__image">
+                        <source
+                                class="articles__image-mobile"
+                                media="(max-width:640px)"
+                                srcset="{{ article.image.url }}"
+                        />
+                        <source
+                                class="articles__image-tablet"
+                                media="(max-width:768px)"
+                                srcset="{{ article.image.url }}"
+                        />
+                        <img
+                                class="articles__image-default"
+                                src="{{ article.image.url }}"
+                                alt=""
+                        />
+                    </picture>
+                </div>
+            {% endfor %}
 
-</body>
-</html>
+            <div class="more-btn container">
+                <a class=" btn btn--primary" href="#">More Article</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}
