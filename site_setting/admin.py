@@ -17,5 +17,10 @@ class HeaderLinkAdmin(admin.ModelAdmin):
 
 admin.site.register(models.HeaderLink, HeaderLinkAdmin)
 
-# class IntroAdmin(admin.ModelAdmin):
-#     list_display =
+
+class IntroAdmin(admin.ModelAdmin):
+    list_display = ['title', 'tag', 'description']
+    list_editable = ['tag', 'description']
+
+
+admin.site.register(models.Intro, IntroAdmin)
