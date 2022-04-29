@@ -16,3 +16,6 @@ class HeaderLinkAdmin(admin.ModelAdmin):
 
 
 admin.site.register(models.HeaderLink, HeaderLinkAdmin)
+
+# class IntroAdmin(admin.ModelAdmin):
+#     list_display =
