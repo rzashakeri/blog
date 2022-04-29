@@ -17,7 +17,10 @@ class Home(TemplateView):
 
 
 def header_component(request):
-    return render(request, 'shared/header_component.html')
+    context = {
+        'links': HeaderLink.objects.filter(is_active=True)
+    }
+    return render(request, 'shared/header_component.html', context)
 
 
 def intro_component(request):
@@ -30,10 +33,3 @@ def newsletter_component(request):
 
 def footer_component(request):
     return render(request, 'shared/footer_component.html')
-
-
-def header_link(request):
-    context = {
-        'links': HeaderLink.objects.filter(is_active=True)
-    }
-    return render(request, 'shared/header_component.html', context)

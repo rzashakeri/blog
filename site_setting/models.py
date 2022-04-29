@@ -19,7 +19,7 @@ class SiteSetting(models.Model):
 
 class HeaderLink(models.Model):
     name = models.CharField(max_length=100, verbose_name='name')
-    url = models.URLField(verbose_name='link')
+    url = models.URLField(verbose_name='url')
     is_active = models.BooleanField(verbose_name='is active ?')
 
     def __str__(self):

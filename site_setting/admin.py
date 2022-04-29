@@ -11,8 +11,8 @@ admin.site.register(models.SiteSetting, SiteSettingAdmin)
 
 
 class HeaderLinkAdmin(admin.ModelAdmin):
-    list_display = ['name', 'link']
-    list_editable = ['link']
+    list_display = ['name', 'url', 'is_active']
+    list_editable = ['url', 'is_active']
 
 
 admin.site.register(models.HeaderLink, HeaderLinkAdmin)
