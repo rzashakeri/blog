@@ -15,3 +15,15 @@ class SiteSetting(models.Model):
     class Meta:
         verbose_name = 'site setting'
         verbose_name_plural = 'site settings'
+
+
+class HeaderLink(models.Model):
+    name = models.CharField(max_length=100, verbose_name='name')
+    link = models.URLField(verbose_name='link')
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'header link'
+        verbose_name_plural = 'header Links'

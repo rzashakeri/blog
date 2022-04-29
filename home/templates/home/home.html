@@ -9,7 +9,7 @@
         <div class="articles__main">
             <div class="articles__view-all container">
                 <h2>general</h2>
-                <a class="btn btn--primary" href="#">View all</a>
+                <a class="btn btn--primary" href="{% url 'category_article' category='general' %}">View all</a>
             </div>
             {% for article in articles_general %}
                 <div class="articles__item">
@@ -46,7 +46,7 @@
 
             <div class="articles__view-all container">
                 <h2>web</h2>
-                <a class="btn btn--primary" href="#">View all</a>
+                <a class="btn btn--primary" href="{% url 'category_article' category='web'  %}">View all</a>
             </div>
             {% for article in articles_web %}
                 <div class="articles__item">
@@ -83,7 +83,7 @@
 
             <div class="articles__view-all container">
                 <h2>programming</h2>
-                <a class="btn btn--primary" href="#">View all</a>
+                <a class="btn btn--primary" href="{% url 'category_article' category='programming' %}">View all</a>
             </div>
             {% for article in articles_programming %}
                 <div class="articles__item">
