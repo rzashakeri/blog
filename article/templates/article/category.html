@@ -1,4 +1,5 @@
 {% extends 'shared/_layout.html' %}
+{% load sorl_thumbnail %}
 {% block title %}
     {{ category_name }}
 {% endblock %}
@@ -16,23 +17,26 @@
                             {{ article.short_description }}
                         </p>
                     </div>
-                    <picture class="articles__image">
-                        <source
-                                class="articles__image-mobile"
-                                media="(max-width:640px)"
-                                srcset="{{ article.image.url }}"
-                        />
-                        <source
-                                class="articles__image-tablet"
-                                media="(max-width:768px)"
-                                srcset="{{ article.image.url }}"
-                        />
-                        <img
-                                class="articles__image-default"
-                                src="{{ article.image.url }}"
-                                alt=""
-                        />
-                    </picture>
+                    {% thumbnail article.image "460x270" crop="center" quality=100 as im %}
+                        <picture class="articles__image">
+
+                            <source
+                                    class="articles__image-mobile"
+                                    media="(max-width:640px)"
+                                    srcset="{{ im.url }}"
+                            />
+                            <source
+                                    class="articles__image-tablet"
+                                    media="(max-width:768px)"
+                                    srcset="{{ im.url }}"
+                            />
+                            <img
+                                    class="articles__image-default"
+                                    src="{{ im.url }}"
+                                    alt="{{ im.title }}"
+                            />
+                        </picture>
+                    {% endthumbnail %}
                 </div>
             {% endfor %}
 
