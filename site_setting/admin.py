@@ -19,8 +19,8 @@ admin.site.register(models.HeaderLink, HeaderLinkAdmin)
 
 
 class IntroAdmin(admin.ModelAdmin):
-    list_display = ['title', 'tag', 'description']
-    list_editable = ['tag', 'description']
+    list_display = ['title', 'tag', 'description', 'is_active']
+    list_editable = ['tag', 'description', 'is_active']
 
 
 admin.site.register(models.Intro, IntroAdmin)
