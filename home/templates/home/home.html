@@ -1,8 +1,10 @@
 {% extends 'shared/_layout.html' %}
+{% load render_partial %}
 {% block title %}
     blog
 {% endblock %}
 {% block content %}
+    {% render_partial 'home.views.intro_component' %}
     <section class="articles">
         <div class="articles__main">
             <div class="articles__view-all container">
@@ -51,7 +53,9 @@
                     <div class="articles__body">
                         <span class="articles__date">{{ article.create_date }}</span>
                         <h2 class="articles__title">
-                            {{ article.title }}
+                            <a href="{% url 'single_article' slug=article.slug %}">
+                                {{ article.title }}
+                            </a>
                         </h2>
                         <p class="articles__description">
                             {{ article.short_description }}
@@ -86,7 +90,9 @@
                     <div class="articles__body">
                         <span class="articles__date">{{ article.create_date }}</span>
                         <h2 class="articles__title">
-                            {{ article.title }}
+                            <a href="{% url 'single_article' slug=article.slug %}">
+                                {{ article.title }}
+                            </a>
                         </h2>
                         <p class="articles__description">
                             {{ article.short_description }}

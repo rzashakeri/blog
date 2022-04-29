@@ -322,6 +322,7 @@ p {
   display: flex;
   flex-direction: column;
   row-gap: 1.3rem;
+  align-items: center;
 }
 
 .articles__date {
@@ -365,6 +366,7 @@ p {
 
   .articles__body {
     width: 200%;
+    align-items: flex-start;
   }
 
   .articles__image-mobile,
