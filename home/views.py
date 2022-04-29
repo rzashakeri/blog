@@ -34,5 +34,6 @@ def footer_component(request):
 
 def header_link(request):
     context = {
-        'link': HeaderLink.objects.filter
+        'links': HeaderLink.objects.filter(is_active=True)
     }
+    return render(request, 'shared/header_component.html', context)
