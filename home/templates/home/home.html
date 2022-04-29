@@ -1,5 +1,6 @@
 {% extends 'shared/_layout.html' %}
 {% load render_partial %}
+{% load sorl_thumbnail %}
 {% block title %}
     blog
 {% endblock %}
@@ -21,32 +22,37 @@
                             </a>
                         </h2>
                         <p class="articles__description">
-                            {{ article.short_description }}
+                            {{ article.short_description }}...
                         </p>
                     </div>
-                    <picture class="articles__image">
-                        <source
-                                class="articles__image-mobile"
-                                media="(max-width:640px)"
-                                srcset="{{ article.image.url }}"
-                        />
-                        <source
-                                class="articles__image-tablet"
-                                media="(max-width:768px)"
-                                srcset="{{ article.image.url }}"
-                        />
-                        <img
-                                class="articles__image-default"
-                                src="{{ article.image.url }}"
-                                alt="{{ article.title }}"
-                        />
-                    </picture>
+                    {% thumbnail article.image "460x270" crop="center" quality=99 as im %}
+                        <picture class="articles__image">
+
+                            <source
+                                    class="articles__image-mobile"
+                                    media="(max-width:640px)"
+                                    srcset="{{ im.url }}"
+                            />
+                            <source
+                                    class="articles__image-tablet"
+                                    media="(max-width:768px)"
+                                    srcset="{{ im.url }}"
+                            />
+                            <img
+                                    class="articles__image-default"
+                                    src="{{ im.url }}"
+                                    alt="{{ im.title }}"
+                            />
+                        </picture>
+                    {% endthumbnail %}
+
+
                 </div>
             {% endfor %}
 
             <div class="articles__view-all container">
                 <h2>web</h2>
-                <a class="btn btn--primary" href="{% url 'category_article' category='web'  %}">View all</a>
+                <a class="btn btn--primary" href="{% url 'category_article' category='web' %}">View all</a>
             </div>
             {% for article in articles_web %}
                 <div class="articles__item">
@@ -58,26 +64,29 @@
                             </a>
                         </h2>
                         <p class="articles__description">
-                            {{ article.short_description }}
+                            {{ article.short_description }}...
                         </p>
                     </div>
-                    <picture class="articles__image">
-                        <source
-                                class="articles__image-mobile"
-                                media="(max-width:640px)"
-                                srcset="{{ article.image.url }}"
-                        />
-                        <source
-                                class="articles__image-tablet"
-                                media="(max-width:768px)"
-                                srcset="{{ article.image.url }}"
-                        />
-                        <img
-                                class="articles__image-default"
-                                src="{{ article.image.url }}"
-                                alt="{{ article.title }}"
-                        />
-                    </picture>
+                    {% thumbnail article.image "460x270" crop="center" quality=99 as im %}
+                        <picture class="articles__image">
+
+                            <source
+                                    class="articles__image-mobile"
+                                    media="(max-width:640px)"
+                                    srcset="{{ im.url }}"
+                            />
+                            <source
+                                    class="articles__image-tablet"
+                                    media="(max-width:768px)"
+                                    srcset="{{ im.url }}"
+                            />
+                            <img
+                                    class="articles__image-default"
+                                    src="{{ im.url }}"
+                                    alt="{{ im.title }}"
+                            />
+                        </picture>
+                    {% endthumbnail %}
                 </div>
             {% endfor %}
 
@@ -95,26 +104,29 @@
                             </a>
                         </h2>
                         <p class="articles__description">
-                            {{ article.short_description }}
+                            {{ article.short_description }}...
                         </p>
                     </div>
-                    <picture class="articles__image">
-                        <source
-                                class="articles__image-mobile"
-                                media="(max-width:640px)"
-                                srcset="{{ article.image.url }}"
-                        />
-                        <source
-                                class="articles__image-tablet"
-                                media="(max-width:768px)"
-                                srcset="{{ article.image.url }}"
-                        />
-                        <img
-                                class="articles__image-default"
-                                src="{{ article.image.url }}"
-                                alt="{{ article.title }}"
-                        />
-                    </picture>
+                    {% thumbnail article.image "460x270" crop="center" quality=99 as im %}
+                        <picture class="articles__image">
+
+                            <source
+                                    class="articles__image-mobile"
+                                    media="(max-width:640px)"
+                                    srcset="{{ im.url }}"
+                            />
+                            <source
+                                    class="articles__image-tablet"
+                                    media="(max-width:768px)"
+                                    srcset="{{ im.url }}"
+                            />
+                            <img
+                                    class="articles__image-default"
+                                    src="{{ im.url }}"
+                                    alt="{{ im.title }}"
+                            />
+                        </picture>
+                    {% endthumbnail %}
                 </div>
             {% endfor %}
 

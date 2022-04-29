@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views import View
 from django.views.generic import TemplateView
 from article.models import Article
-from site_setting.models import HeaderLink, SiteSetting
+from site_setting.models import HeaderLink, SiteSetting, Intro
 
 
 class Home(TemplateView):
@@ -25,7 +25,10 @@ def header_component(request):
 
 
 def intro_component(request):
-    return render(request, 'shared/intro_component.html')
+    context = {
+        'intro': Intro.objects.filter(is_active=True).first()
+    }
+    return render(request, 'shared/intro_component.html',context)
 
 
 def newsletter_component(request):
