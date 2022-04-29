@@ -8,6 +8,7 @@ class SiteSetting(models.Model):
     about_us = models.CharField(max_length=400, verbose_name='about us')
     email = models.EmailField(verbose_name='site email')
     phone_number = models.CharField(max_length=100, verbose_name='mobile number')
+    is_active = models.BooleanField(verbose_name='is active ?')
 
     def __str__(self):
         return self.site_name

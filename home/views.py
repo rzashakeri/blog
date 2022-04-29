@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views import View
 from django.views.generic import TemplateView
 from article.models import Article
-from site_setting.models import HeaderLink
+from site_setting.models import HeaderLink, SiteSetting
 
 
 class Home(TemplateView):
@@ -18,7 +18,8 @@ class Home(TemplateView):
 
 def header_component(request):
     context = {
-        'links': HeaderLink.objects.filter(is_active=True)
+        'links': HeaderLink.objects.filter(is_active=True),
+        'site_setting': SiteSetting.objects.filter()
     }
     return render(request, 'shared/header_component.html', context)
 
