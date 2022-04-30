@@ -20,17 +20,20 @@
             <img class="article__image-default" src="{{ single_article.image.url }}" alt="">
         </picture>
         <div class="article__body">
-            <p class="article__description">
-                {{ single_article.description }}
-            </p>
-            <picture class="article__thumbnail">
-                <source
-                        class="article__thumbnail-mobile"
-                        media="(max-width:640px)"
-                        srcset="/assets/images/article_thumbnail_into.svg"
-                >
-                <img class="article__thumbnail-default" src="/assets/images/article_thumbnail_into.svg" alt="">
-            </picture>
+            <div class="article__description">
+                {{ single_article.description |safe }}
+            </div>
+        </div>
+        <div class="article__author">
+            {% if single_article.author.avatar %}
+                <img class="article__author-image" src="{{ single_article.author.avatar.url }}" alt="">
+            {% else %}
+                <img class="article__author-image" src="/static/assets/images/avatar.jpg" alt="">
+            {% endif %}
+            <div class="article__author-body">
+                <p class="article__author-name">{{ single_article.author.get_full_name }}</p>
+                <p class="article__author-about">test</p>
+            </div>
         </div>
     </article>
 {% endblock %}

@@ -21,3 +21,4 @@ var infinite = new Waypoint.Infinite({
     }
 
 });
+CKEDITOR.replace('textarea');

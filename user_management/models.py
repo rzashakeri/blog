@@ -7,6 +7,7 @@ class User(AbstractUser):
     mobile = models.CharField(max_length=100, null=True, blank=True, verbose_name='mobile')
     avatar = models.ImageField(upload_to='avatars/')
     email_active_code = models.CharField(max_length=300, verbose_name='activation code')
+    about_us = models.CharField(max_length=300, verbose_name='about us')
 
     def __str__(self):
         if self.first_name != '' and self.last_name != '':
