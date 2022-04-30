@@ -1,4 +1,5 @@
 {% extends 'shared/_layout.html' %}
+{% load sorl_thumbnail %}
 {% block title %}
 
 {% endblock %}
@@ -11,14 +12,16 @@
                 <span class="article__category">{{ single_article.category.name }}</span>
             </div>
         </div>
-        <picture class="article__image">
-            <source
-                    class="article__image-mobile"
-                    media="(max-width:640px)"
-                    srcset="{{ single_article.image.url }}"
-            >
-            <img class="article__image-default" src="{{ single_article.image.url }}" alt="">
-        </picture>
+        {% thumbnail single_article.image "800x400" crop="center" quality=100 as im %}
+            <picture class="article__image">
+                <source
+                        class="article__image-mobile"
+                        media="(max-width:640px)"
+                        srcset="{{ im.url }}"
+                >
+                <img class="article__image-default" src="{{ im.url }}" alt="">
+            </picture>
+        {% endthumbnail %}
         <div class="article__body">
             <div class="article__description">
                 {{ single_article.description |safe }}
@@ -26,13 +29,15 @@
         </div>
         <div class="article__author">
             {% if single_article.author.avatar %}
-                <img class="article__author-image" src="{{ single_article.author.avatar.url }}" alt="">
+                {% thumbnail single_article.author.avatar "100x100" crop="center" quality=100 as im %}
+                <img class="article__author-image" src="{{ im.url }}" alt="">
+                {% endthumbnail %}
             {% else %}
                 <img class="article__author-image" src="/static/assets/images/avatar.jpg" alt="">
             {% endif %}
             <div class="article__author-body">
-                <p class="article__author-name">{{ single_article.author.get_full_name }}</p>
-                <p class="article__author-about">test</p>
+                <p class="article__author-name">{{ single_article.author.get_full_name |capfirst }}</p>
+                <p class="article__author-about">{{ single_article.author.about_us }}</p>
             </div>
         </div>
     </article>
