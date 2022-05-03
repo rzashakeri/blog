@@ -1,7 +1,7 @@
 {% extends 'shared/_layout.html' %}
 {% load sorl_thumbnail %}
 {% block title %}
-{{ single_article.title }}
+    {{ single_article.title }}
 {% endblock %}
 {% block content %}
     <article class="article container">
@@ -30,7 +30,7 @@
         <div class="article__author">
             {% if single_article.author.avatar %}
                 {% thumbnail single_article.author.avatar "100x100" crop="center" quality=100 as im %}
-                <img class="article__author-image" src="{{ im.url }}" alt="">
+                    <img class="article__author-image" src="{{ im.url }}" alt="">
                 {% endthumbnail %}
             {% else %}
                 <img class="article__author-image" src="/static/assets/images/avatar.jpg" alt="">
@@ -40,66 +40,37 @@
                 <p class="article__author-about">{{ single_article.author.about_us }}</p>
             </div>
         </div>
+        <div class="article__recommendation">
+            <h2 class="article__recommendation-heading">
+                recommendation
+            </h2>
+            {% for category in categories|slice:":1" %}
+                {% for article in category.article_set.all|slice:":3" %}
+                    <div class="article__recommendation-item articles__item">
+                        <div class="articles__body">
+                            <span class="articles__date">{{ article.create_data }}</span>
+                            <h2 class="articles__title">
+                                {{ article.title }}
+                            </h2>
+                            <p class="articles__description">
+                                {{ article.short_description }}
+                            </p>
+                        </div>
+                        {% thumbnail article.image "253x200" crop='center' quality=10 as im %}
+                        <picture class="articles__image">
+                            <source class="articles__image-mobile" media="(max-width:640px)"
+                                    srcset="{{ im.url }}">
+                            <source class="articles__image-tablet" media="(max-width:768px)"
+                                    srcset="{{ im.url }}">
+                            <img class="articles__image-default" src="{{ im.url }}"
+                                 alt="">
+                        </picture>
+                    {% endthumbnail %}
+                    </div>
+                {% endfor %}
+            {% endfor %}
 
-              <div class="article__recommendation">
-            <h2 class="article__recommendation-heading">recommendation</h2>
-            <div class="article__recommendation-item articles__item">
 
-              <div class="articles__body">
-                <span class="articles__date">AUGust 13, 2021 </span>
-                <h2 class="articles__title">
-                  10 Hilarious Cartoons That Depict Real-Life Problems of
-                  Programmers
-                </h2>
-                <p class="articles__description">
-                  Redefined the user acquisition and redesigned the onboarding
-                  experience, all within 3 working weeks.
-                </p>
-              </div>
-              <picture class="articles__image">
-                <source class="articles__image-mobile" media="(max-width:640px)" srcset="/assets/images/articles_Thumbnail_mobile.svg">
-                <source class="articles__image-tablet" media="(max-width:768px)" srcset="/assets/images/articles_Thumbnail_tablet.svg">
-                <img class="articles__image-default" src="/assets/images/articles_Thumbnail_desktop.svg" alt="">
-              </picture>
-            </div>
-            <div class="article__recommendation-item articles__item">
-
-              <div class="articles__body">
-                <span class="articles__date">AUGust 13, 2021 </span>
-                <h2 class="articles__title">
-                  10 Hilarious Cartoons That Depict Real-Life Problems of
-                  Programmers
-                </h2>
-                <p class="articles__description">
-                  Redefined the user acquisition and redesigned the onboarding
-                  experience, all within 3 working weeks.
-                </p>
-              </div>
-              <picture class="articles__image">
-                <source class="articles__image-mobile" media="(max-width:640px)" srcset="/assets/images/articles_Thumbnail_mobile.svg">
-                <source class="articles__image-tablet" media="(max-width:768px)" srcset="/assets/images/articles_Thumbnail_tablet.svg">
-                <img class="articles__image-default" src="/assets/images/articles_Thumbnail_desktop.svg" alt="">
-              </picture>
-            </div>
-            <div class="article__recommendation-item articles__item">
-
-              <div class="articles__body">
-                <span class="articles__date">AUGust 13, 2021 </span>
-                <h2 class="articles__title">
-                  10 Hilarious Cartoons That Depict Real-Life Problems of
-                  Programmers
-                </h2>
-                <p class="articles__description">
-                  Redefined the user acquisition and redesigned the onboarding
-                  experience, all within 3 working weeks.
-                </p>
-              </div>
-              <picture class="articles__image">
-                <source class="articles__image-mobile" media="(max-width:640px)" srcset="/assets/images/articles_Thumbnail_mobile.svg">
-                <source class="articles__image-tablet" media="(max-width:768px)" srcset="/assets/images/articles_Thumbnail_tablet.svg">
-                <img class="articles__image-default" src="/assets/images/articles_Thumbnail_desktop.svg" alt="">
-              </picture>
-            </div>
-          </div>
+        </div>
     </article>
 {% endblock %}
