@@ -531,7 +531,7 @@ p {
     border-radius: 8px;
     display: flex;
     column-gap: 2rem;
-    margin: 1rem 2rem;
+    margin: 5rem 2rem;
     padding: 2rem;
     width: 90%;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
@@ -547,6 +547,16 @@ p {
     justify-content: center;
     text-align: left;
     row-gap: 1rem;
+    width: 83%;
+}
+
+.article__author-about {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* number of lines to show */
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
 }
 
 @media screen and (min-width: 768px) {
