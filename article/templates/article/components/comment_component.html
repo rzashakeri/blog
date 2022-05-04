@@ -24,7 +24,7 @@
             {% endif %}
             {% for sub_comment in comment.articlecomment_set.all %}
                 <div class="article__comment-reply">
-                    {% thumbnail sub_comment.user.avatar '80x80' crop='center' quality=10 as im %}
+                    {% thumbnail sub_comment.user.avatar '80x80' crop='center' quality=100 as im %}
                         {% if sub_comment.user.avatar %}
                             <img class="article__comment-avatar" src="{{ im.url }}" alt="">
                         {% else %}
@@ -44,8 +44,9 @@
             {% endfor %}
     {% endfor %}
 
-    <form class="article__comment-form" action="">
+    <form name="comment_form" action="{% url 'comment_article' %}" method="post" class="article__comment-form">
+        {% csrf_token %}
         {{ comment_form.comment_text }}
-        <a href="#" class="btn btn--success" type="submit">submit</a>
+        <input name="submit" class="btn btn--success" type="submit" value="submit">
     </form>
 </div>
