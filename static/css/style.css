@@ -662,7 +662,7 @@ p {
 }
 
 .article__recommendation-item.articles__item .articles__body {
-    align-self: center ;
+    align-self: center;
 }
 
 @media screen and (min-width: 768px) {
@@ -683,5 +683,127 @@ p {
 
     .article__recommendation-heading {
         width: 53%;
+    }
+}
+
+/* article comment */
+
+
+.article__comment {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 1rem;
+    margin: 6rem 0;
+}
+
+.article__comment-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    row-gap: 1rem;
+}
+
+.article__comment-text {
+    border-radius: 8px;
+    width: 100%;
+    height: 100px;
+    resize: none;
+    padding: 1rem;
+    font-family: "Vazir";
+    border-color: #ccc;
+}
+
+.article__comment-avatar {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+}
+
+.article__comment-main {
+    display: flex;
+    column-gap: 3rem;
+    align-items: flex-start;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
+    rgb(209, 213, 219) 0px 0px 0px 1px inset;
+    padding: 2rem 2rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.article__comment-reply::before {
+    content: "";
+    display: block;
+    height: 3px;
+    position: absolute;
+    top: 200px;
+    width: 100px;
+    background-color: #ccc;
+    z-index: -1;
+    transform: rotate(90deg);
+}
+
+.article__comment-reply {
+    display: flex;
+    column-gap: 3rem;
+    align-items: flex-start;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
+    rgb(209, 213, 219) 0px 0px 0px 1px inset;
+    padding: 2rem 2rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.article__comment-box {
+    display: flex;
+    width: 100%;
+    row-gap: 2rem;
+    column-gap: 3rem;
+    margin: 1rem 0;
+    border: none;
+    border-radius: 8px;
+    transition: all 0.5s ease-in-out;
+    flex-direction: column;
+    position: relative;
+}
+
+.article__comment-main:hover,
+.article__comment-reply:hover {
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+    transition: all 0.5s ease-in-out;
+}
+
+.article__comment-body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    row-gap: 1.7rem;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.article__comment-heading {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.article__comment-user {
+    font-size: 1.5rem;
+}
+
+@media screen and (min-width: 768px) {
+    .article__comment-reply {
+        width: 90%;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .article__comment {
+        width: 52%;
     }
 }
