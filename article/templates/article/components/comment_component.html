@@ -45,8 +45,7 @@
     {% endfor %}
 
     <form class="article__comment-form" action="">
-            <textarea placeholder="Enter Your Comment" resizable class="article__comment-text" name="" id="" cols="30"
-                      rows="10"></textarea>
+        {{ comment_form.comment_text }}
         <a href="#" class="btn btn--success" type="submit">submit</a>
     </form>
 </div>

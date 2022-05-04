@@ -1,5 +1,7 @@
+from django.http import HttpRequest
 from django.shortcuts import render
 from django.views import View
+from .forms import CommentForm
 from django.views.generic import DetailView, ListView, TemplateView
 
 from article.models import Article, ArticleCategory
@@ -39,6 +41,12 @@ class CategoryArticle(ListView):
 
 class CommentArticle(TemplateView):
     template_name = 'article/components/comment_component.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(CommentArticle, self).get_context_data()
+        comment_form = CommentForm()
+        context['comment_form'] = comment_form
+        return context
 
 
 class RecommendationArticle(TemplateView):
