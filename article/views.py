@@ -43,3 +43,7 @@ class CommentArticle(TemplateView):
 
 class RecommendationArticle(TemplateView):
     template_name = 'article/components/recommendation_component.html'
+
+
+class AuthorArticle(TemplateView):
+    template_name = 'article/components/author_component.html'

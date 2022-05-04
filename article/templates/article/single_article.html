@@ -28,19 +28,7 @@
                 {{ single_article.description |safe }}
             </div>
         </div>
-        <div class="article__author">
-            {% if single_article.author.avatar %}
-                {% thumbnail single_article.author.avatar "100x100" crop="center" quality=100 as im %}
-                    <img class="article__author-image" src="{{ im.url }}" alt="">
-                {% endthumbnail %}
-            {% else %}
-                <img class="article__author-image" src="/static/assets/images/avatar.jpg" alt="">
-            {% endif %}
-            <div class="article__author-body">
-                <p class="article__author-name">{{ single_article.author.get_full_name |capfirst }}</p>
-                <p class="article__author-about">{{ single_article.author.about_us }}</p>
-            </div>
-        </div>
+        {% render_partial 'article.views.AuthorArticle' single_article=single_article %}
         {% render_partial 'article.views.RecommendationArticle' categories=categories %}
         {% render_partial 'article.views.CommentArticle' single_article=single_article %}
     </article>
