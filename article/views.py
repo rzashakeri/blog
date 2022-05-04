@@ -39,3 +39,7 @@ class CategoryArticle(ListView):
 
 class CommentArticle(TemplateView):
     template_name = 'article/components/comment_component.html'
+
+
+class RecommendationArticle(TemplateView):
+    template_name = 'article/components/recommendation_component.html'

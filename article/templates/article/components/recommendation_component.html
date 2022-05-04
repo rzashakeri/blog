@@ -1,0 +1,33 @@
+{% load sorl_thumbnail %}
+<div class="article__recommendation">
+    <h2 class="article__recommendation-heading">
+        recommendation
+    </h2>
+    {% for category in categories|slice:":1" %}
+        {% for article in category.article_set.all|slice:":3" %}
+            <div class="article__recommendation-item articles__item">
+                <div class="articles__body">
+                    <span class="articles__date">{{ article.create_date }}</span>
+                    <h2 class="articles__title">
+                        {{ article.title }}
+                    </h2>
+                    <p class="articles__description">
+                        {{ article.short_description }}
+                    </p>
+                </div>
+                {% thumbnail article.image "253x220" crop='center' quality=10 as im %}
+                    <picture class="articles__image">
+                        <source class="articles__image-mobile" media="(max-width:640px)"
+                                srcset="{{ im.url }}">
+                        <source class="articles__image-tablet" media="(max-width:768px)"
+                                srcset="{{ im.url }}">
+                        <img class="articles__image-default" src="{{ im.url }}"
+                             alt="">
+                    </picture>
+                {% endthumbnail %}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+
+</div>
