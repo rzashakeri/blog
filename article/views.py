@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.views.generic import DetailView, ListView
+from django.views import View
+from django.views.generic import DetailView, ListView, TemplateView
 
 from article.models import Article, ArticleCategory
 
@@ -34,3 +35,7 @@ class CategoryArticle(ListView):
         context = super(CategoryArticle, self).get_context_data()
         context['category_name'] = self.kwargs.get('category')
         return context
+
+
+class CommentArticle(TemplateView):
+    template_name = 'article/components/comment_component.html'

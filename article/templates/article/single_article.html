@@ -1,5 +1,6 @@
 {% extends 'shared/_layout.html' %}
 {% load sorl_thumbnail %}
+{% load render_partial %}
 {% block title %}
     {{ single_article.title }}
 {% endblock %}
@@ -72,55 +73,6 @@
 
 
         </div>
-        <div class="article__comment">
-            <h2 class="articles__comment-title">comments</h2>
-            {% for comment in single_article.articlecomment_set.all %}
-            <div class="article__comment-box">
-                {% if comment.parent is None %}
-                    <div class="article__comment-main">
-                        {% if comment.user.avatar %}
-                            {% thumbnail comment.user.avatar "80x80" crop="center" quality=100 as im %}
-                                <img class="article__comment-avatar" src="{{ im.url }}" alt="">
-                            {% endthumbnail %}
-                        {% else %}
-                            <img class="article__comment-avatar" src="/static/assets/images/avatar.jpg" alt="">
-                        {% endif %}
-                        <div class="article__comment-body">
-                            <div class="article__comment-heading">
-                                <b class="article__comment-user">{{ comment.user.get_full_name }}</b>
-                                <p class="article__comment-date">{{ comment.created_date }}</p>
-                            </div>
-                            <p class="article__comment-message">{{ comment.comment }}</p>
-                            <button class="btn btn--warning reply-btn"><a href="#"></a> reply</button>
-                        </div>
-                    </div>
-                {% endif %}
-                {% for sub_comment in comment.articlecomment_set.all %}
-                        <div class="article__comment-reply">
-                            {% thumbnail sub_comment.user.avatar '80x80' crop='center' quality=100 as im %}
-                                {% if sub_comment.user.avatar %}
-                                    <img class="article__comment-avatar" src="{{ im.url }}" alt="">
-                                {% else %}
-                                    <img class="article__comment-avatar" src="/static/assets/images/avatar.jpg" alt="">
-                                {% endif %}
-                            {% endthumbnail %}
-                            <div class="article__comment-body">
-                                <div class="article__comment-heading">
-                                    <b class="article__comment-user">{{ sub_comment.user.get_full_name }}</b>
-                                    <p class="article__comment-date">{{ sub_comment.created_date }}</p>
-                                </div>
-                                <p class="article__comment-message">{{ sub_comment.comment }}</p>
-                                <button class="btn btn--warning reply-btn"> reply</button>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-        {% endfor %}
-            <form class="article__comment-form" action="">
-            <textarea placeholder="Enter Your Comment" resizable class="article__comment-text" name="" id="" cols="30"
-                      rows="10"></textarea>
-                <button class="btn btn--success" type="submit">submit</button>
-            </form>
-        </div>
+        {% render_partial 'article.views.CommentArticle' single_article=single_article %}
     </article>
 {% endblock %}
