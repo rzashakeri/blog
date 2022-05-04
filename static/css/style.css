@@ -213,23 +213,24 @@ p {
 }
 
 .btn--success {
-  background-color: rgb(74 222 128);
-  color: #fff;
+    background-color: rgb(74 222 128);
+    color: #fff;
 }
 
 .btn--warning {
-  background-color: rgb(251 191 36);
-  color: #fff;
+    background-color: rgb(251 191 36);
+    color: #fff;
 }
 
 .reply-btn {
-  align-self: flex-end;
-  width: 40px;
-  height: 30px;
-  padding: 0.5rem;
-  border-radius: 4px;
-  background-color: rgb(229, 167, 32);
+    align-self: flex-end;
+    width: 40px;
+    height: 30px;
+    padding: 0.5rem;
+    border-radius: 4px;
+    background-color: rgb(229, 167, 32);
 }
+
 .reply-btn a {
     text-decoration: none;
     color: #fff;
@@ -830,3 +831,5 @@ p {
         width: 52%;
     }
 }
+
+/* login and register form */

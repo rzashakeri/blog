@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'article',
     'newsletter',
     'home',
+    'account',
     # external app
     'django_render_partial',
     'sorl.thumbnail',
