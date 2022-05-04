@@ -661,6 +661,10 @@ p {
     -webkit-box-orient: vertical;
 }
 
+.article__recommendation-item.articles__item .articles__body {
+    align-self: center ;
+}
+
 @media screen and (min-width: 768px) {
     .article__recommendation .articles__image {
         height: 200px;
