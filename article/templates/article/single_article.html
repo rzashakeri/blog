@@ -48,7 +48,7 @@
                 {% for article in category.article_set.all|slice:":3" %}
                     <div class="article__recommendation-item articles__item">
                         <div class="articles__body">
-                            <span class="articles__date">{{ article.create_data }}</span>
+                            <span class="articles__date">{{ article.create_date }}</span>
                             <h2 class="articles__title">
                                 {{ article.title }}
                             </h2>
@@ -56,7 +56,7 @@
                                 {{ article.short_description }}
                             </p>
                         </div>
-                        {% thumbnail article.image "253x200" crop='center' quality=10 as im %}
+                        {% thumbnail article.image "253x220" crop='center' quality=10 as im %}
                         <picture class="articles__image">
                             <source class="articles__image-mobile" media="(max-width:640px)"
                                     srcset="{{ im.url }}">
