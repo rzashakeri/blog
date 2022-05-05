@@ -1,10 +1,37 @@
 {% extends 'shared/_layout.html' %}
 {% load static %}
 {% block title %}
-register
+    Register
 {% endblock %}
 {% block content %}
-<div class="account">
-
-</div>
+    <div class="account">
+        <div class="register">
+            <form class="register__form" action="" method="post">
+                {% csrf_token %}
+                <h2 class="register__heading">Register</h2>
+                <div class="form-item">
+                    {{ register_form.first_name }}
+                    {{ register_form.first_name.errors }}
+                </div>
+                <div class="form-item">
+                    {{ register_form.last_name }}
+                    {{ register_form.last_name.errors }}
+                </div>
+                <div class="form-item">
+                    {{ register_form.email }}
+                    {{ register_form.email.errors }}
+                </div>
+                <div class="form-item">
+                    {{ register_form.password }}
+                    {{ register_form.password.errors }}
+                </div>
+                <div class="form-item">
+                    {{ register_form.confirm_password }}
+                    {{ register_form.confirm_password.errors }}
+                </div>
+                <p class="forgot-password">Forgot Password ? <a href="#">Click Here</a></p>
+                <button type="submit" class="register__btn btn btn--success">register</button>
+            </form>
+        </div>
+    </div>
 {% endblock %}

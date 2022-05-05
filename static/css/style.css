@@ -832,4 +832,70 @@ p {
     }
 }
 
-/* login and register form */
+/* register and login*/
+
+.account {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+}
+
+.register,
+.login {
+    padding: 2rem;
+    border-radius: 8px;
+    margin: 4rem;;
+    display: flex;
+    justify-content: center;
+    width: 310px;
+    flex-direction: column;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    transition: all 0.5s ease-in-out;
+    border-top: 4px solid rgb(9, 255, 0);
+}
+
+.register__heading,
+.login__heading {
+    margin-bottom: 1rem;
+}
+
+.register__form,
+.login__form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    margin: 1rem;
+}
+
+.register__confirm-password {
+    margin-bottom: 1rem;
+}
+
+.register__form-item,
+.login__form-item {
+    padding: 1rem 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 1.6rem;
+    width: 100%;
+}
+
+.forgot-password {
+    font-size: 1.5rem;
+}
+
+.forgot-password a {
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: rgb(0, 183, 158);
+    margin-left: 0.2rem;
+}
+
+
+/* error */
+
+.errorlist {
+    color: red;
+    font-size: 1.5rem;
+}
