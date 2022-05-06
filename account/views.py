@@ -1,11 +1,12 @@
 from django import forms
+from django.contrib.auth import login
 from django.http import HttpRequest
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
 from django.views.generic import CreateView, TemplateView, FormView
 
-from account.forms import RegisterForm
+from account.forms import RegisterForm, LoginForm
 from user_management.models import User
 
 
@@ -46,6 +47,28 @@ class RegisterView(View):
 
 class LoginView(View):
     def get(self, request):
-        pass
-    def post(self, request):
-        pass
+        login_form = LoginForm()
+        context = {
+            'login_form': login_form
+        }
+        return render(request, 'account/login.html', context)
+
+    def post(self, request: HttpRequest):
+        login_form = LoginForm(request.POST)
+        if login_form.is_valid():
+            user_email = login_form.cleaned_data.get('email')
+            user_password = login_form.cleaned_data.get('password')
+            user: User = User.objects.filter(email__iexact=user_email).first()
+            if user is not None:
+                check_password = user.check_password(user_password)
+                if check_password:
+                    login(request, user)
+                    return redirect('home')
+                else:
+                    login_form.add_error('password', 'password is not correct !')
+            else:
+                login_form.add_error('email', 'email dose not exists !')
+        context = {
+            'login_form': login_form
+        }
+        return render(request, 'account/login.html', context)

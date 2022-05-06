@@ -79,3 +79,29 @@ class RegisterForm(forms.Form):
             return confirm_password
         raise ValidationError('password and confirm password Do not match ')
 
+
+class LoginForm(forms.Form):
+    email = forms.EmailField(widget=forms.EmailInput(attrs={
+        'class': 'register__form-item register__email',
+        'placeholder': 'email'
+    }),
+        required=True,
+        error_messages={
+            'required': 'email field is required'
+        },
+        validators=[
+            validators.EmailValidator
+        ])
+
+    password = forms.CharField(widget=forms.PasswordInput(attrs={
+        'class': 'register__form-item register__password',
+        'placeholder': 'password'
+    }),
+        required=True,
+        error_messages={
+            'required': 'password is required'
+        },
+        validators=[
+            validate_password,
+            validators.MinLengthValidator(8, 'password must be 8 characters')
+        ])
