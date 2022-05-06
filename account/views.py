@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.http import HttpRequest
 from django.shortcuts import render, redirect
 from django.urls import reverse
@@ -72,3 +72,9 @@ class LoginView(View):
             'login_form': login_form
         }
         return render(request, 'account/login.html', context)
+
+
+class LogoutView(View):
+    def get(self, request):
+        logout(request)
+        return redirect('login')

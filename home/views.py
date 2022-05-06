@@ -1,3 +1,4 @@
+from django.http import HttpRequest
 from django.shortcuts import render
 from django.views import View
 from django.views.generic import TemplateView
@@ -16,7 +17,7 @@ class Home(TemplateView):
         return context
 
 
-def header_component(request):
+def header_component(request: HttpRequest):
     context = {
         'links': HeaderLink.objects.filter(is_active=True),
         'site': SiteSetting.objects.filter(is_active=True).first()
@@ -28,7 +29,7 @@ def intro_component(request):
     context = {
         'intro': Intro.objects.filter(is_active=True).first()
     }
-    return render(request, 'shared/intro_component.html',context)
+    return render(request, 'shared/intro_component.html', context)
 
 
 def newsletter_component(request):

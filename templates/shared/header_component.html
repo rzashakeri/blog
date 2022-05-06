@@ -13,6 +13,12 @@
                 {% for link in links %}
                     <li class="navbar__link"><a href="{{ link.url }}">{{ link.name|capfirst }}</a></li>
                 {% endfor %}
+                {% if user.is_authenticated %}
+                    <li class="navbar__link"><a href="{% url 'login' %}">welcome</a></li>
+                {% else %}
+                    <li class="navbar__link"><a href="{% url 'login' %}">Login</a></li>
+                    <li class="navbar__link"><a href="{% url 'register' %}">Register</a></li>
+                {% endif %}
             </ul>
         </div>
     </nav>
