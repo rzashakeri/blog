@@ -33,7 +33,8 @@ class RegisterView(View):
                 new_user = User(first_name=first_name,
                                 last_name=last_name,
                                 email=email,
-                                is_active=False)
+                                is_active=False,
+                                username=email)
                 new_user.set_password(password)
                 new_user.save()
                 return redirect('home')
@@ -41,3 +42,10 @@ class RegisterView(View):
             'register_form': register_form
         }
         return render(request, 'account/register.html', context)
+
+
+class LoginView(View):
+    def get(self, request):
+        pass
+    def post(self, request):
+        pass
