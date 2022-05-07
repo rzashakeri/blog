@@ -9,8 +9,8 @@ from site_setting.models import HeaderLink, SiteSetting, Intro
 class Home(TemplateView):
     template_name = 'home/home.html'
 
-    def get_context_data(self):
-        context = super(Home, self).get_context_data()
+    def get_context_data(self,**kwargs):
+        context = super(Home, self).get_context_data(**kwargs)
         context['articles_general'] = Article.objects.filter(category__name='general', is_active=True).all()[:3]
         context['articles_web'] = Article.objects.filter(category__name='web', is_active=True).all()[:3]
         context['articles_programming'] = Article.objects.filter(category__name='programming', is_active=True).all()[:3]

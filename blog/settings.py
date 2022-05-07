@@ -60,6 +60,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
 ROOT_URLCONF = 'blog.urls'
 
 TEMPLATES = [
@@ -137,8 +138,14 @@ PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 CKEDITOR_UPLOAD_PATH = "uploads/"
 
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'programmerify@gmail.com'
+EMAIL_HOST_PASSWORD = 'gQbiBkAGGAsrS8A'
+EMAIL_PORT = 587
+EMAIL_HOST = 'smtp.gmail.com'
