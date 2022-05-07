@@ -105,3 +105,10 @@ class LoginForm(forms.Form):
             validate_password,
             validators.MinLengthValidator(8, 'password must be 8 characters')
         ])
+
+
+class ForgotPasswordForm(forms.Form):
+    email = forms.EmailField(widget=forms.EmailInput(attrs={
+        'class': 'register__form-item register__email',
+        'placeholder': 'email'
+    }))

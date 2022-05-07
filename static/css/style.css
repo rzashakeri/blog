@@ -842,7 +842,8 @@ p {
 }
 
 .register,
-.login {
+.login,
+.forgot-password {
     padding: 2rem;
     border-radius: 8px;
     margin: 4rem;;
@@ -856,12 +857,14 @@ p {
 }
 
 .register__heading,
-.login__heading {
+.login__heading,
+.forgot-password__heading{
     margin-bottom: 1rem;
 }
 
 .register__form,
-.login__form {
+.login__form,
+.forgot-password__form{
     display: flex;
     flex-direction: column;
     row-gap: 1rem;
@@ -869,7 +872,8 @@ p {
 }
 
 .register__form-item,
-.login__form-item {
+.login__form-item,
+.forgot-password__item {
     padding: 1rem 1.5rem;
     border: 1px solid #ccc;
     border-radius: 10px;

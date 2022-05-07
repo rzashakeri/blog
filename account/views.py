@@ -6,7 +6,7 @@ from django.urls import reverse
 from django.views import View
 from django.views.generic import CreateView, TemplateView, FormView
 
-from account.forms import RegisterForm, LoginForm
+from account.forms import RegisterForm, LoginForm, ForgotPasswordForm
 from user_management.models import User
 
 
@@ -78,3 +78,15 @@ class LogoutView(View):
     def get(self, request):
         logout(request)
         return redirect('login')
+
+
+class ForgotPasswordView(View):
+    def get(self, request: HttpRequest):
+        forgot_password_form = ForgotPasswordForm()
+        context = {
+            'forgot_password_form': forgot_password_form
+        }
+        return render(request, 'account/forgot_password.html', context)
+
+    def post(self, request: HttpRequest):
+        pass
