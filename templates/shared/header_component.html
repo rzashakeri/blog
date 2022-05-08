@@ -13,7 +13,7 @@
                 {% for link in links %}
                     <li class="navbar__link"><a href="{{ link.url }}">{{ link.name|capfirst }}</a></li>
                 {% endfor %}
-                {% if user.is_authenticated %}
+                {% if request.user.is_authenticated %}
                     <li class="navbar__link"><a href="#">welcome</a></li>
                     <li class="navbar__link"><a href="{% url 'logout' %}">Log out</a></li>
                 {% else %}

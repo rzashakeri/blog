@@ -9,12 +9,8 @@
 <body>
 {% render_partial 'home.views.header_component' %}
 <main class="main">
-    {% block content %}
-
-    {% endblock %}
+    {% block content %}{% endblock %}
     {% render_partial 'home.views.newsletter_component' %}
-    <div class="separator">
-    </div>
     {% render_partial 'home.views.footer_component' %}
 </main>
 {% include 'shared/footer_references.html' %}

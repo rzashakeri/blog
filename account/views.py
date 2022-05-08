@@ -63,7 +63,7 @@ class LoginView(View):
                 check_password = user.check_password(user_password)
                 if check_password:
                     login(request, user)
-                    return redirect('home')
+                    return redirect(reverse('home'))
                 else:
                     login_form.add_error('password', 'password is not correct !')
             else:

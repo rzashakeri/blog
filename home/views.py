@@ -9,7 +9,7 @@ from site_setting.models import HeaderLink, SiteSetting, Intro
 class Home(TemplateView):
     template_name = 'home/home.html'
 
-    def get_context_data(self,**kwargs):
+    def get_context_data(self, **kwargs):
         context = super(Home, self).get_context_data(**kwargs)
         context['articles_general'] = Article.objects.filter(category__name='general', is_active=True).all()[:3]
         context['articles_web'] = Article.objects.filter(category__name='web', is_active=True).all()[:3]
@@ -20,7 +20,8 @@ class Home(TemplateView):
 def header_component(request: HttpRequest):
     context = {
         'links': HeaderLink.objects.filter(is_active=True),
-        'site': SiteSetting.objects.filter(is_active=True).first()
+        'site': SiteSetting.objects.filter(is_active=True).first(),
+        'request': request
     }
     return render(request, 'shared/header_component.html', context)
 

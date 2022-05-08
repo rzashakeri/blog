@@ -102,8 +102,7 @@ class LoginForm(forms.Form):
             'required': 'password is required'
         },
         validators=[
-            validate_password,
-            validators.MinLengthValidator(8, 'password must be 8 characters')
+            validate_password
         ])
 
 
