@@ -124,4 +124,4 @@ class ForgotPasswordView(View):
 
 class ResetPasswordView(View):
     def get(self, request,reset_password_code):
-        pass
+

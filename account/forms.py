@@ -111,3 +111,36 @@ class ForgotPasswordForm(forms.Form):
         'class': 'register__form-item register__email',
         'placeholder': 'email'
     }))
+
+
+class ResetPasswordForm(forms.Form):
+    password = forms.CharField(widget=forms.PasswordInput(attrs={
+        'class': 'register__form-item register__password',
+        'placeholder': 'password'
+    }),
+        required=True,
+        error_messages={
+            'required': 'password is required'
+        },
+        validators=[
+            validate_password
+        ])
+
+    confirm_password = forms.CharField(widget=forms.PasswordInput(attrs={
+        'class': 'register__confirm-password',
+        'placeholder': 'confirm password'
+    }),
+        required=True,
+        error_messages={
+            'required': 'confirm password is required'
+        },
+        validators=[
+            validate_password
+        ])
+
+    def clean_confirm_password(self):
+        password = self.cleaned_data.get('password')
+        confirm_password = self.cleaned_data.get('confirm_password')
+        if password == confirm_password:
+            return confirm_password
+        raise ValidationError('password and confirm password Do not match')
