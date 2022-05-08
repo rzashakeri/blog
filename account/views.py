@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth import login, logout
-from django.http import HttpRequest
+from django.http import HttpRequest, HttpResponse, Http404
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.utils.crypto import get_random_string
@@ -9,6 +9,7 @@ from django.views.generic import CreateView, TemplateView, FormView
 
 from account.forms import RegisterForm, LoginForm, ForgotPasswordForm
 from user_management.models import User
+from utility.email_service import send_email
 
 
 class RegisterView(View):
@@ -40,6 +41,7 @@ class RegisterView(View):
                                 email_active_code=get_random_string(72))
                 new_user.set_password(password)
                 new_user.save()
+                send_email('active account', new_user.email, {'user': new_user}, 'emails/activate_account.html')
                 return redirect('home')
         context = {
             'register_form': register_form
@@ -82,9 +84,19 @@ class LogoutView(View):
         return redirect('login')
 
 
-class ActiveAccount(View):
-    def post(self, request):
-        pass
+class ActiveAccountView(View):
+    def get(self, request, email_active_code):
+        user: User = User.objects.filter(email_active_code__iexact=email_active_code).first()
+        if user is not None:
+            if not user.is_active:
+                user.is_active = True
+                user.email_active_code = get_random_string(72)
+                user.save()
+                return redirect('login')
+            else:
+                pass
+        else:
+            raise Http404
 
 
 class ForgotPasswordView(View):
