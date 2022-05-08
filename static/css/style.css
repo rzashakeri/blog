@@ -902,3 +902,15 @@ p {
     color: red;
     font-size: 1.5rem;
 }
+
+.comment-login {
+    border: 1px solid green;
+    padding:1rem;
+    border-radius: 10px;
+    display: inline;
+}
+
+.comment-login a {
+    text-decoration: none;
+    color: green;
+}

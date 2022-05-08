@@ -43,10 +43,15 @@
                 </div>
             {% endfor %}
     {% endfor %}
+    {% if request.user.is_authenticated %}
+        <form name="comment_form" action="{% url 'comment_article' %}" method="post" class="article__comment-form">
+            {% csrf_token %}
+            <input type="hidden" name="article_id" value="{{ single_article.id }}">
+            {{ comment_form.comment_text }}
+            <input name="submit" class="btn btn--success" type="submit" value="submit">
+        </form>
+        {% else %}
+        <p class="comment-login">for submit comment first <a href="{% url 'login' %}">login</a></p>
+    {% endif %}
 
-    <form name="comment_form" action="{% url 'comment_article' %}" method="post" class="article__comment-form">
-        {% csrf_token %}
-        {{ comment_form.comment_text }}
-        <input name="submit" class="btn btn--success" type="submit" value="submit">
-    </form>
 </div>
