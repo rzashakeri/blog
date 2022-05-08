@@ -1,4 +1,5 @@
 from django import forms
+from django.contrib import messages
 from django.contrib.auth import login, logout
 from django.http import HttpRequest, HttpResponse, Http404
 from django.shortcuts import render, redirect
@@ -108,4 +109,16 @@ class ForgotPasswordView(View):
         return render(request, 'account/forgot_password.html', context)
 
     def post(self, request: HttpRequest):
-        pass
+        forgot_password_form = ForgotPasswordForm(request.POST)
+        if forgot_password_form.is_valid():
+            user_email = forgot_password_form.cleaned_data.get('email')
+            user: User = User.objects.filter(email__iexact=user_email).first()
+            if user is not None:
+                send_email('reset password', user.email, {'user': user}, 'emails/reset_password.html')
+                user.email_active_code = get_random_string(72)
+                user.save()
+                return redirect('login')
+            else:
+                forgot_password_form.add_error('email', 'email dose not exists')
+
+

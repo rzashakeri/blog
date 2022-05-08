@@ -9,6 +9,14 @@
             <form class="login__form" action="" method="post">
                 {% csrf_token %}
                 <h2>Login</h2>
+                {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                            <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+
                 <div class="form-item">
                     {{ login_form.email }}
                     {{ login_form.email.errors }}
@@ -17,7 +25,8 @@
                     {{ login_form.password }}
                     {{ login_form.password.errors }}
                 </div>
-                <p class="forgot-password-link">Forgot Password ? <a href="{% url 'forgot_password' %}">Click Here</a></p>
+                <p class="forgot-password-link">Forgot Password ? <a href="{% url 'forgot_password' %}">Click Here</a>
+                </p>
                 <button type="submit" class="login__btn btn btn--success">Login</button>
             </form>
         </div>
