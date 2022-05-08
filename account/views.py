@@ -3,6 +3,7 @@ from django.contrib.auth import login, logout
 from django.http import HttpRequest
 from django.shortcuts import render, redirect
 from django.urls import reverse
+from django.utils.crypto import get_random_string
 from django.views import View
 from django.views.generic import CreateView, TemplateView, FormView
 
@@ -35,7 +36,8 @@ class RegisterView(View):
                                 last_name=last_name,
                                 email=email,
                                 is_active=False,
-                                username=email)
+                                username=email,
+                                email_active_code=get_random_string(72))
                 new_user.set_password(password)
                 new_user.save()
                 return redirect('home')
@@ -78,6 +80,11 @@ class LogoutView(View):
     def get(self, request):
         logout(request)
         return redirect('login')
+
+
+class ActiveAccount(View):
+    def post(self, request):
+        pass
 
 
 class ForgotPasswordView(View):
