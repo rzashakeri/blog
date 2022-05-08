@@ -122,3 +122,6 @@ class ForgotPasswordView(View):
                 forgot_password_form.add_error('email', 'email dose not exists')
 
 
+class ResetPasswordView(View):
+    def get(self, request,reset_password_code):
+        pass
