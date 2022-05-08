@@ -8,7 +8,7 @@ from django.utils.crypto import get_random_string
 from django.views import View
 from django.views.generic import CreateView, TemplateView, FormView
 
-from account.forms import RegisterForm, LoginForm, ForgotPasswordForm
+from account.forms import RegisterForm, LoginForm, ForgotPasswordForm, ResetPasswordForm
 from user_management.models import User
 from utility.email_service import send_email
 
@@ -115,13 +115,41 @@ class ForgotPasswordView(View):
             user: User = User.objects.filter(email__iexact=user_email).first()
             if user is not None:
                 send_email('reset password', user.email, {'user': user}, 'emails/reset_password.html')
-                user.email_active_code = get_random_string(72)
-                user.save()
                 return redirect('login')
             else:
                 forgot_password_form.add_error('email', 'email dose not exists')
 
+        context = {
+            'forgot_password_form': forgot_password_form
+        }
+        return render(request, 'account/forgot_password.html', context)
+
 
 class ResetPasswordView(View):
-    def get(self, request,reset_password_code):
+    def get(self, request, reset_password_code):
+        user: User = User.objects.filter(email_active_code__iexact=reset_password_code).exists()
+        if user:
+            reset_password_form = ResetPasswordForm()
+            context = {
+                'reset_password_form': reset_password_form
+            }
+            return render(request, 'account/reset_password.html', context)
+        else:
+            raise Http404
 
+    def post(self, request: HttpRequest, reset_password_code):
+        reset_password_form = ResetPasswordForm(request.POST)
+        if reset_password_form.is_valid():
+            user: User = User.objects.filter(email_active_code__iexact=reset_password_code).first()
+            if user is not None:
+                user_password = reset_password_form.cleaned_data.get('password')
+                user.set_password(user_password)
+                user.email_active_code = get_random_string(72)
+                user.save()
+                return redirect('login')
+            else:
+                reset_password_form.add_error('password', 'user dose not exists')
+        context = {
+            'reset_password_form': reset_password_form
+        }
+        return render(request, 'account/reset_password.html', context)

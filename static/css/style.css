@@ -843,7 +843,8 @@ p {
 
 .register,
 .login,
-.forgot-password {
+.forgot-password,
+.reset-password {
     padding: 2rem;
     border-radius: 8px;
     margin: 4rem;;
@@ -864,7 +865,8 @@ p {
 
 .register__form,
 .login__form,
-.forgot-password__form{
+.forgot-password__form,
+.reset-password {
     display: flex;
     flex-direction: column;
     row-gap: 1rem;

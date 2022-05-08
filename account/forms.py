@@ -127,7 +127,7 @@ class ResetPasswordForm(forms.Form):
         ])
 
     confirm_password = forms.CharField(widget=forms.PasswordInput(attrs={
-        'class': 'register__confirm-password',
+        'class': 'register__form-item register__confirm-password',
         'placeholder': 'confirm password'
     }),
         required=True,
