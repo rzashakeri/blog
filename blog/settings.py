@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'newsletter',
     'home',
     'account',
+    'user_profile',
     # external app
     'django_render_partial',
     'sorl.thumbnail',
