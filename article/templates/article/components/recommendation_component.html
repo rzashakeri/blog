@@ -9,7 +9,9 @@
                 <div class="articles__body">
                     <span class="articles__date">{{ article.create_date }}</span>
                     <h2 class="articles__title">
-                        {{ article.title }}
+                        <a href="{% url 'single_article' slug=article.slug %}">
+                            {{ article.title }}
+                        </a>
                     </h2>
                     <p class="articles__description">
                         {{ article.short_description }}
