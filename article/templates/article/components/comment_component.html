@@ -1,7 +1,7 @@
 {% load sorl_thumbnail %}
 {% load static %}
 <div class="article__comment">
-    <h2 class="articles__comment-title">comments</h2>
+    <h2 class="articles__comment-title">comments ({{ single_article.articlecomment_set.count }})</h2>
     {% for comment in single_article.articlecomment_set.all %}
         <div class="article__comment-box">
             {% if comment.parent is None %}
@@ -41,11 +41,11 @@
                         <p class="article__comment-message">{{ sub_comment.comment }}</p>
                     </div>
                 </div>
-                </div>
             {% endfor %}
+        </div>
     {% endfor %}
     {% if request.user.is_authenticated %}
-        <form name="comment_form" action="" method="post" class="article__comment-form">
+        <form name="comment_form" action="" method="post" class="article__comment-form" id="comment_form">
             {% csrf_token %}
             <input type="hidden" name="article_id" value="{{ single_article.id }}">
             <input type="hidden" name="parent_id" id="parent_id" value="">
