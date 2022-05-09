@@ -1,5 +1,3 @@
-
-
 const toggler = document.querySelector(".navbar__toggler");
 const navbar = document.querySelector(".navbar");
 toggler.addEventListener("click", (e) => {
@@ -22,3 +20,9 @@ var infinite = new Waypoint.Infinite({
 
 });
 CKEDITOR.replace('textarea');
+
+
+function fillParentId(parentId) {
+    $('#parent_id').val(parentId);
+    document.getElementById('comment_form').scrollIntoView({behavior: "smooth"});
+}

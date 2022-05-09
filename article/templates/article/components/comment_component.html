@@ -1,4 +1,5 @@
 {% load sorl_thumbnail %}
+{% load static %}
 <div class="article__comment">
     <h2 class="articles__comment-title">comments</h2>
     {% for comment in single_article.articlecomment_set.all %}
@@ -18,39 +19,40 @@
                             <p class="article__comment-date">{{ comment.created_date }}</p>
                         </div>
                         <p class="article__comment-message">{{ comment.comment }}</p>
-                        <button class="btn btn--warning reply-btn"><a href="#"></a> reply</button>
+                        <a class="btn btn--warning reply-btn" onclick="fillParentId({{ comment.id }})"> reply</a>
+
                     </div>
                 </div>
             {% endif %}
             {% for sub_comment in comment.articlecomment_set.all %}
                 <div class="article__comment-reply">
-                    {% thumbnail sub_comment.user.avatar '80x80' crop='center' quality=100 as im %}
-                        {% if sub_comment.user.avatar %}
+                    {% if sub_comment.user.avatar %}
+                        {% thumbnail sub_comment.user.avatar '80x80' crop='center' quality=100 as im %}
                             <img class="article__comment-avatar" src="{{ im.url }}" alt="">
-                        {% else %}
-                            <img class="article__comment-avatar" src="/static/assets/images/avatar.jpg" alt="">
-                        {% endif %}
-                    {% endthumbnail %}
+                        {% endthumbnail %}
+                    {% else %}
+                        <img class="article__comment-avatar" src="/static/assets/images/avatar.jpg" alt="">
+                    {% endif %}
                     <div class="article__comment-body">
                         <div class="article__comment-heading">
                             <b class="article__comment-user">{{ sub_comment.user.get_full_name }}</b>
                             <p class="article__comment-date">{{ sub_comment.created_date }}</p>
                         </div>
                         <p class="article__comment-message">{{ sub_comment.comment }}</p>
-                        <button class="btn btn--warning reply-btn"> reply</button>
                     </div>
                 </div>
                 </div>
             {% endfor %}
     {% endfor %}
     {% if request.user.is_authenticated %}
-        <form name="comment_form" action="{% url 'comment_article' %}" method="post" class="article__comment-form">
+        <form name="comment_form" action="" method="post" class="article__comment-form">
             {% csrf_token %}
             <input type="hidden" name="article_id" value="{{ single_article.id }}">
+            <input type="hidden" name="parent_id" id="parent_id" value="">
             {{ comment_form.comment_text }}
             <input name="submit" class="btn btn--success" type="submit" value="submit">
         </form>
-        {% else %}
+    {% else %}
         <p class="comment-login">for submit comment first <a href="{% url 'login' %}">login</a></p>
     {% endif %}
 

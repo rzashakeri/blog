@@ -3,6 +3,5 @@ from . import views
 
 urlpatterns = [
     path('<slug:slug>', views.SingleArticle.as_view(), name='single_article'),
-    path('category/<slug:category>', views.CategoryArticle.as_view(), name='category_article'),
-    path('comment/', views.CommentArticle.as_view(), name='comment_article')
+    path('category/<slug:category>', views.CategoryArticle.as_view(), name='category_article')
 ]

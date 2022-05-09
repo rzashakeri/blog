@@ -1,24 +1,37 @@
 from django.http import HttpRequest
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse
+
 from .forms import CommentForm
 from django.views import View
 from django.views.generic import DetailView, ListView, TemplateView
 
-from article.models import Article, ArticleCategory
+from article.models import Article, ArticleCategory, ArticleComment
 
 
-class SingleArticle(DetailView):
-    template_name = 'article/single_article.html'
-    model = Article
-    context_object_name = 'single_article'
+class SingleArticle(View):
+    def get(self, request, slug):
+        single_article = Article.objects.filter(slug__iexact=slug).first()
+        categories = single_article.category.all()
+        context = {
+            'single_article': single_article,
+            'categories': categories
+        }
+        return render(request, 'article/single_article.html', context)
 
-    def get_context_data(self, **kwargs):
-        context = super(SingleArticle, self).get_context_data()
-        slug = self.kwargs.get('slug')
-        article = Article.objects.filter(slug__iexact=slug).first()
-        categories = article.category.prefetch_related('article_set').all()
-        context['categories'] = categories
-        return context
+    def post(self, request, *args, **kwargs):
+        comment_form = CommentForm(request.POST)
+        if comment_form.is_valid():
+            article_id = request.POST.get('article_id')
+            comment = comment_form.cleaned_data.get('comment_text')
+            parent_id = request.POST.get('parent_id')
+            new_comment = ArticleComment(article_id=article_id,
+                                         user_id=request.user.id,
+                                         comment=comment,
+                                         parent_id=parent_id)
+            new_comment.save()
+            slug = kwargs.get('slug')
+            return redirect(reverse('single_article', kwargs={'slug': slug}))
 
 
 class CategoryArticle(ListView):
@@ -42,16 +55,6 @@ class CategoryArticle(ListView):
 class CommentArticle(View):
     def get(self, request, *args, **kwargs):
         comment_form = CommentForm()
-        single_article = kwargs.get('single_article')
-        context = {
-            'comment_form': comment_form,
-            'single_article': single_article
-        }
-        return render(request, 'article/components/comment_component.html', context)
-
-    def post(self, request: HttpRequest, *args, **kwargs):
-        comment_form = CommentForm(request.POST)
-        print(comment_form)
         single_article = kwargs.get('single_article')
         context = {
             'comment_form': comment_form,
