@@ -43,7 +43,7 @@ class RegisterView(View):
                 new_user.set_password(password)
                 new_user.save()
                 send_email('active account', new_user.email, {'user': new_user}, 'emails/activate_account.html')
-                return redirect('home')
+                return redirect('login')
         context = {
             'register_form': register_form
         }
@@ -68,7 +68,7 @@ class LoginView(View):
                 check_password = user.check_password(user_password)
                 if check_password:
                     login(request, user)
-                    return redirect(reverse('home'))
+                    return redirect(reverse('user_profile'))
                 else:
                     login_form.add_error('password', 'password is not correct !')
             else:
@@ -82,7 +82,7 @@ class LoginView(View):
 class LogoutView(View):
     def get(self, request):
         logout(request)
-        return redirect('login')
+        return redirect('home')
 
 
 class ActiveAccountView(View):

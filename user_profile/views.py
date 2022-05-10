@@ -14,7 +14,7 @@ class UserProfile(View):
             context = {
                 'user': user
             }
-            return render(request, 'user_profile.html', context)
+            return render(request, 'user_profile/user_profile.html', context)
         else:
             raise Http404
 

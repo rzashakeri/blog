@@ -14,8 +14,8 @@
                     <li class="navbar__link"><a href="{{ link.url }}">{{ link.name|capfirst }}</a></li>
                 {% endfor %}
                 {% if request.user.is_authenticated %}
-                    <li class="navbar__link"><a href="{% url 'user_profile' %}">welcome</a></li>
-                    <li class="navbar__link"><a href="{% url 'logout' %}">Log out</a></li>
+                    <li class="navbar__link"><a href="{% url 'user_profile' %}">Hi {{ request.user.first_name }}</a></li>
+                    <li class="navbar__link"><a href="{% url 'user_profile' %}">Profile</a></li>
                 {% else %}
                     <li class="navbar__link"><a href="{% url 'login' %}">Login</a></li>
                     <li class="navbar__link"><a href="{% url 'register' %}">Register</a></li>
