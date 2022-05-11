@@ -1,3 +1,5 @@
+<img src="https://img.shields.io/badge/Django-092E20?style=default&logo=django&logoColor=white"/> [![wakatime](https://wakatime.com/badge/user/3eaffb46-33fb-4b13-a194-09adc9f8b4c6/project/900cbe9f-7a39-46b3-94b9-506a6c10ee1d.svg)](https://wakatime.com/badge/user/3eaffb46-33fb-4b13-a194-09adc9f8b4c6/project/900cbe9f-7a39-46b3-94b9-506a6c10ee1d) <img src="http://ForTheBadge.com/images/badges/made-with-python.svg" width="135px"/>
+
 Personally Blog
 ----------
 
@@ -19,9 +21,12 @@ This blog features :
 10. Articles Recommendation
 11. Author Details
 12. and ...
+<<<<<<< HEAD
 
 ## Front End Section
 
 You can access the front and end of this project using the following link
 
 ### [🔗 Front End Section](https://github.com/rzashakeri/blog-front-end)    
+=======
+>>>>>>> aba5aecafd72cf2973d47373b3376fb3a6cb4c55
