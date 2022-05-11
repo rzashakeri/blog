@@ -7,7 +7,7 @@ from django.shortcuts import render, redirect
 from django.utils.crypto import get_random_string
 from django.views import View
 from user_management.models import User
-from user_profile.forms import EditProfileModelForm
+from user_profile.forms import EditProfileModelForm, ChangePasswordForm
 from utility.email_service import send_email
 
 
@@ -66,6 +66,46 @@ class EditProfileView(View):
             'edit_profile_form': edit_profile_form
         }
         return render(request, 'user_profile/edit_profile.html', context)
+
+
+class ChangePasswordView(View):
+    def get(self, request):
+        if request.user.is_authenticated:
+            change_password_form = ChangePasswordForm()
+            context = {
+                'change_password_form': change_password_form
+            }
+            return render(request, 'user_profile/change_password.html', context)
+        else:
+            raise Http404
+
+    def post(self, request):
+        if request.user.is_authenticated:
+            change_password_form = ChangePasswordForm(request.POST)
+            if change_password_form.is_valid():
+                # get user id from request
+                user_id = request.user.id
+                # get current user password
+                user_old_password = change_password_form.cleaned_data.get('old_password')
+                # get user by id
+                user: User = User.objects.filter(id=user_id).first()
+                if user is not None:
+                    check_old_password = user.check_password(user_old_password)
+                    if check_old_password:
+                        new_password = change_password_form.cleaned_data.get('confirm_new_password')
+                        user.set_password(new_password)
+                        user.save()
+                        messages.warning(request, 'your password has been changed')
+                        return redirect('login')
+                    else:
+                        change_password_form.add_error('old_password', 'old password is wrong')
+                else:
+                    raise Http404
+            context = {
+                'change_password_form': change_password_form
+            }
+            return render(request, 'user_profile/change_password.html', context)
+                    
 
 
 def user_profile_options(request, *args, **kwargs):

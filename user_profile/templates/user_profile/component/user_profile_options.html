@@ -1,7 +1,7 @@
 <ul class="user-profile__options">
     <li class="user-profile__option"><a href="{% url 'user_profile' %}">user profile</a></li>
     <li class="user-profile__option"><a href="{% url 'edit_profile' %}">Edit profile</a></li>
-    <li class="user-profile__option"><a href="#">change password</a></li>
+    <li class="user-profile__option"><a href="{% url 'change_password' %}">change password</a></li>
     <li class="user-profile__option"><a href="{% url 'logout' %}">Logout</a></li>
     {% if messages %}
         <ul class="messages">
