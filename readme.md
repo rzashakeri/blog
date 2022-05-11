@@ -19,3 +19,9 @@ This blog features :
 10. Articles Recommendation
 11. Author Details
 12. and ...
+
+## Front End Section
+
+You can access the front and end of this project using the following link
+
+### [🔗 Front End Section](https://github.com/rzashakeri/blog-front-end)    
