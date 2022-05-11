@@ -1,4 +1,4 @@
-<img src="https://github.com/rzashakeri/blog/blob/9d863fab64cdffde77577898d8f752dc6489724b/COVER.svg"/>
+<img src="https://github.com/rzashakeri/blog/blob/f2d2017ffbc5351d1736ecd276aeb1bbe5e40f17/COVER.svg"/>
 
 <img src="https://img.shields.io/badge/Django-092E20?style=default&logo=django&logoColor=white"/> [![wakatime](https://wakatime.com/badge/user/3eaffb46-33fb-4b13-a194-09adc9f8b4c6/project/900cbe9f-7a39-46b3-94b9-506a6c10ee1d.svg)](https://wakatime.com/badge/user/3eaffb46-33fb-4b13-a194-09adc9f8b4c6/project/900cbe9f-7a39-46b3-94b9-506a6c10ee1d) <img src="http://ForTheBadge.com/images/badges/made-with-python.svg" width="135px"/>
 
