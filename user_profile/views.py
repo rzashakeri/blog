@@ -107,7 +107,6 @@ class ChangePasswordView(View):
             return render(request, 'user_profile/change_password.html', context)
                     
 
-
 def user_profile_options(request, *args, **kwargs):
     context = {
         'edit_profile_form': kwargs.get('edit_profile_form')

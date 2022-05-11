@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.views import View
 from django.views.generic import TemplateView
 from article.models import Article
+from newsletter.forms import NewsletterForm
 from site_setting.models import HeaderLink, SiteSetting, Intro
 
 
@@ -31,11 +32,6 @@ def intro_component(request):
         'intro': Intro.objects.filter(is_active=True).first()
     }
     return render(request, 'shared/intro_component.html', context)
-
-
-def newsletter_component(request):
-    return render(request, 'shared/newsletter_component.html')
-
 
 def footer_component(request):
     return render(request, 'shared/footer_component.html')

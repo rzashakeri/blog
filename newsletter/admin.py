@@ -6,4 +6,4 @@ class NewsletterAdmin(admin.ModelAdmin):
     list_display = ['email']
     
 
-admin.site.register(models.Newsletter, NewsletterAdmin)
+admin.site.register(models.NewsletterModel, NewsletterAdmin)

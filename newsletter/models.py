@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Newsletter(models.Model):
+class NewsletterModel(models.Model):
     email = models.EmailField(verbose_name='Email')
 
     def __str__(self):

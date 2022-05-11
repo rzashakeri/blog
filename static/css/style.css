@@ -1080,9 +1080,19 @@ ul.messages li.warning {
     padding: 1rem;
     font-size: 1.5rem;
     border-radius: 10px;
-    background-color: #2bb700;
+    background-color: #ffa500;
     color: #fff;
 }
+
+.ul.messages li.success {
+    border: 1px solid #fff;
+    padding: 1rem;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    background-color: #28af00;
+    color: #fff;
+}
+
 
 .error-form {
     border: 1px solid #fff;
