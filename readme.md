@@ -25,6 +25,6 @@ This blog features :
 
 ## Front End Section
 
-You can access the front and end of this project using the following link
+You can access the front end of this project using the following link
 
 ### [🔗 Front End Section](https://github.com/rzashakeri/blog-front-end)    
