@@ -23,7 +23,6 @@ This blog features :
 10. Articles Recommendation
 11. Author Details
 12. and ...
-<<<<<<< HEAD
 
 ## Front End Section
 
