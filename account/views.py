@@ -93,6 +93,7 @@ class ActiveAccountView(View):
                 user.is_active = True
                 user.email_active_code = get_random_string(72)
                 user.save()
+                messages.warning(request, 'Your Account has been activated')
                 return redirect('login')
             else:
                 pass

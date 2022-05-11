@@ -245,6 +245,15 @@ p {
     padding: 2rem 0;
 }
 
+.edit-profile-btn {
+    align-self: self-start;
+    margin-left: 7.3rem;
+    width: 135px;
+    display: flex;
+    justify-content: center;
+}
+
+
 /* badge */
 .badge {
     background-color: #f2f4f7;
@@ -1006,6 +1015,14 @@ p {
     resize: none;
 }
 
+.edit-profile-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+    align-items: center;
+}
+
 @media screen and (min-width: 768px) {
     .user-profile__heading {
         display: flex;
@@ -1055,4 +1072,29 @@ p {
     .user-profile__textarea {
         width: 95%;
     }
+}
+
+/* message */
+ul.messages li.warning {
+    border: 1px solid #fff;
+    padding: 1rem;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    background-color: #2bb700;
+    color: #fff;
+}
+
+.error-form {
+    border: 1px solid #fff;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: #b70000;
+    color: #ffffff;
+
+}
+
+.error-form p {
+    color: #ffffff;
+    font-size: 1.5rem;
+
 }

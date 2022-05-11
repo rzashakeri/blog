@@ -3,45 +3,50 @@
 {% load sorl_thumbnail %}
 {% load render_partial %}
 {% block title %}
-edit profile
+    edit profile
 {% endblock %}
 {% block content %}
 
     <div class="user-profile container">
-        {% render_partial 'user_profile.views.user_profile_options' %}
+        {% render_partial 'user_profile.views.user_profile_options' edit_profile_form=edit_profile_form %}
         <div class="user-profile__main">
             <div class="user-profile__heading">
-                <h2>User Info</h3>
-                    <picture class="user-profile__image">
-                        {% if user.avatar %}
-                            {% thumbnail user.avatar "100x100" crop="center" quality=90 as img %}
+                <h2>User Info</h2>
+                <picture class="user-profile__image">
+                    {% if user.avatar %}
+                        {% thumbnail user.avatar "100x100" crop="center" quality=90 as img %}
                             <img class="user-profile__avatar" src="{{ img.url }}" alt="">
-                            {% endthumbnail %}
-                        {% else %}
-                            <img class="user-profile__avatar" src="/static/assets/images/avatar.jpg" alt="">
-                        {% endif %}
-                    </picture>
+                        {% endthumbnail %}
+                    {% else %}
+                        <img class="user-profile__avatar" src="/static/assets/images/avatar.jpg" alt="">
+                    {% endif %}
+                </picture>
             </div>
-            <div class="user-profile__body">
-                <div class="user-profile__item">
-                    <span class="user-profile__item-name">Name : </span>
-                    <input class="user-profile__item-input" type="text" value="{{ user.first_name }}">
+            <form class="edit-profile-form" method="post" action="{% url 'edit_profile' %} ">
+                {% csrf_token %}
+                <div class="user-profile__body">
+                    <div class="user-profile__item">
+                        <span class="user-profile__item-name">{{ edit_profile_form.first_name.label }}</span>
+                        {{ edit_profile_form.first_name }}
+                    </div>
+                    <div class="user-profile__item">
+                        <span class="user-profile__item-name">{{ edit_profile_form.last_name.label }}</span>
+                        {{ edit_profile_form.last_name }}
+                    </div>
+                    <div class="user-profile__item">
+                        <span class="user-profile__item-name">{{ edit_profile_form.email.label }}</span>
+                        {{ edit_profile_form.email }}
+                    </div>
+
                 </div>
-                <div class="user-profile__item">
-                    <span class="user-profile__item-name">Family : </span>
-                    <input class="user-profile__item-input" type="text" value="{{ user.last_name }}">
+                <div class="user-profile__item user-profile__about">
+                    <span class="user-profile__item-name">{{ edit_profile_form.about_us.label }}</span>
+                    {{ edit_profile_form.about_us }}
                 </div>
-                <div class="user-profile__item">
-                    <span class="user-profile__item-name">Email : </span>
-                    <input class="user-profile__item-input" type="text" value="{{ user.email }}">
-                </div>
-            </div>
-            <div class="user-profile__item user-profile__about">
-                <span class="user-profile__item-name">About:</span>
-                <textarea class="user-profile__item-input user-profile__textarea" resizable rows="10" type="text">
-                    {{ user.about_us }}
-              </textarea>
-            </div>
+
+                <input value="submit" type="submit" class="btn btn--block btn--success edit-profile-btn" href="">
+            </form>
+
         </div>
     </div>
 {% endblock %}
